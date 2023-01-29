@@ -10,7 +10,7 @@ When we installed base packages, we also installed vim and dhcpcd, so now we can
 Now we have a connection established
 
 ## Installing packages
-(This)[https://wiki.archlinux.org/title/List_of_applications] is a list of packages that we can install in our system. Feel free to check them out and choose your preferences. \
+[this](https://wiki.archlinux.org/title/List_of_applications) is a list of packages that we can install in our system. Feel free to check them out and choose your preferences. \
 First I will be installing yay
 ```
 # pacman -S git
