@@ -21,7 +21,7 @@ Temporary:
 ```
 # loadkeys es
 ```
-Permanently:
+Persistent:
 ```
 # localectl set-keymap --no-convert es
 ```
