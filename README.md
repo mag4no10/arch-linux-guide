@@ -355,3 +355,6 @@ To enable the network daemons on your next reboot, you need to enable `dhcpcd.se
 ```
 # systemctl enable dhcpcd iwd
 ```
+## Exit chroot and reboot:  
+Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. You can also unmount all mounted partition after this. 
+Finally, `reboot`.
