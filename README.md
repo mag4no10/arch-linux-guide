@@ -8,7 +8,7 @@ If you feel lost you may visit the [`official wiki`](https://wiki.archlinux.org/
 * Get the official iso image from [here](https://archlinux.org/download/)
 * Verify the signature
 * Prepare the installation media using [rufus](https://rufus.ie/es/), [balena](https://www.balena.io/etcher) or similar
-* Boot the USB changing boot in bios.
+* Boot the USB changing the boot order in bios.
 
 ## Keyboard-Layout
 The default console keymap is US. Available layouts can be listed with:
@@ -38,9 +38,9 @@ Use to see all network interfaces
 ```
 # ip link
 ```
-Normally, enp0sX is the wired interface and wlanX or wlp3sX is the wireless interface.
-Wired connections should be enable just by plugging in the RJ45 cable.
-For wireless connections, iwctl command should be used.
+Normally, enp0sX is the wired interface and wlanX or wlp3sX are the wireless interfaces.
+Wired connections should be enabled just by plugging in the RJ45 cable.
+For wireless connections, iwctl command should be used. \
 (I will be using wlan0 for convenience, use your own interface name)
 
 First start the iwc daemon:
@@ -108,4 +108,250 @@ Let's use sda as our disk.
 * First we have to clean the main drive
 ```
 # gdisk /dev/sda
+```
+* Press <kbd>x</kbd> to enter **expert mode**. Then press <kbd>z</kbd> to *zap* our drive. Then hit <kbd>y</kbd> when prompted about wiping out GPT and blanking out MBR. Note that this will ***zap*** your entire drive so your data will be gone - reduced to atoms after doing this. THIS. CANNOT. BE. UNDONE. \
+
+* Now we are going to start partitioning our filesystem
+```
+# cgdisk /dev/sda
+```
+* Press <kbd>Return</kbd> when warned about damaged GPT.
+Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions.
+
++ Create the `boot` partition
+
+	- Hit New from the options at the bottom.
+	- Just hit enter to select the default option for the first sector.
+	- Now the partion size - Arch wiki recommends 200-300 MB for the boot + size. Let’s make 1GiB in case we need to add more OS to our machine. I’m gonna assign mine with 1024MiB. Hit enter.
+	- Set GUID to `EF00`. Hit enter.
+	- Set name to `boot`. Hit enter.
+	- Now you should see the new partition in the partitions list with a partition type of EFI System and a partition name of boot. You will also notice there is 1007KB above the created partition. That is the MBR. Don’t worry about that and just leave it there.
+
++ Create the `swap` partition
+
+	- Hit New again from the options at the bottom of partition list.
+	- Just hit enter to select the default option for the first sector.
+	- For the swap partition size, I always assign mine with 1GiB. Hit enter.
+	- Set GUID to `8200`. Hit enter.
+	- Set name to `swap`. Hit enter.
+
++ Create the `root` partition
+
+	- Hit New again.
+	- Hit enter to select the default option for the first sector.
+	- Hit enter again to input your root size.
+	- Also hit enter for the GUID to select default(`8300`).
+	- Then set name of the partition to `root`.
+
++ Create the `home` partition
+
+	- Hit New again.
+	- Hit enter to select the default option for the first sector.
+	- Hit enter again to use the remainder of the disk.
+	- Also hit enter for the GUID to select default.
+	- Then set name of the partition to `home`.
+
++ Lastly, hit `Write` at the bottom of the patitions list to *write the changes* to the disk. Type `yes` to *confirm* the write command. Now we are done partitioning the disk. Hit `Quit` *to exit cgdisk*. Go to the [next section](#formatting-partitions).
+
+## Format the partitions
+Once we got our partitions created, we must give them an appropiate type. For swap it is swap type, for efi it is fat32 but in the other hand, root and home are kinda debatable. People usually use EXT4, but there are other benefits about using btrfs or xfs. We will be using the old EXT4, but it is up to you. \
+(In my case, sda1 is efi, sda2 is swap, sda3 is root and sda4 is home, but is may not be in yours. Check it out!)
+```
+# mkfs.ext4 /dev/sda3
+# mkfs.ext4 /dev/sda4
+# mkswap /dev/sda2
+# mkfs.fat -F32 /dev/sda1
+```
+
+## Mount the file systems
+Mount the root volume to /mnt
+```
+# mount /dev/sda3 /mnt
+```
+Create a boot mount point and assign it to efi partition
+```
+mount --mkdir /dev/sda1 /mnt/boot
+```
+Now create a home mount point and assign it to home partition
+```
+mount --mkdir /dev/sda4 /mnt/home
+```
+Finally enable swap volume with swapon
+```
+swapon /dev/sda2
+```
+
+## Installation
+We are halfway done. Let's install the base linux packages with pacstrap
+```
+# pacstrap /mnt base base-devel linux linux-firmware vim
+```
+This will install ONLY ESSENTIAL PACKAGES. Once all is finished, you must install other apps in order to make a functional system. Here are a few examples:
+* userspace utilities for the management of file systems that will be used on the system:
+  - unrar
+  - unzip
+  - android-udev
+  - ntfs-3g 
+* utilities for accessing RAID or LVM partitions:
+  - lvm2
+* specific firmware for other devices not included in `linux-firmware`:
+* software necessary for networking:
+  - dhcpcd
+  - iwd
+  - inetutils
+  - iputils
+* text editor:
+  - nano
+  - vi
+  - vim
+  - neovim
+* packages for accessing documentation in man and info pages:
+  - man-db
+  - man-pages
+Dont forget to install this later !!!
+
+## Fstab
+This is a file that stores descripting information about all filesystems in our linux system. 
+```
+# genfstab -U /mnt >> /mnt/etc/fstab
+```
+Check the resulting /mnt/etc/fstab file, and edit it in case of errors.
+
+## Chroot
+Change root into the new system:
+```
+# arch-chroot /mnt
+```
+## Timezone
+Set the time zone, list of available timezones are in `/usr/share/zoneinfo/`. Select yours and link it to your localtime:
+```
+# ln -sf /usr/share/zoneinfo/Europe/Dublin /etc/localtime
+```
+Run hwclock to generate /etc/adjtime
+(hwclock is used to adjust hardware clock)
+```
+# hwclock --systohc
+```
+
+## Localization
+Locale is the language that your system is going to use. This include characters, numbers and other specials symbols. \
+Possible options are located in `/etc/locale.gen`. Generate the locales by running:
+```
+# locale-gen
+```
+Now create `/etc/locale.config` and set the LANG variable accordingly
+```
+# echo "LANG=es_US.UTF-8" > /etc/locale/conf
+```
+If you used loadkeys earlier, you may make the layout persistent
+```
+# vim /etc/vconsole.conf
+```
+KEYMAP=layout-of-your-choice
+
+## Network Configuration
+You can use this command to create a hostname
+```
+# hostnamectl set-hostname myhostname
+```
+Alternatively, you can create and edit the hostname file
+```
+# echo "IncredibleHostname" > /etc/hostname
+```
+Now open `/etc/hosts` to add matching entries to `hosts`
+```
+127.0.0.1    localhost  
+::1          localhost  
+127.0.1.1    MYHOSTNAME.localdomain	  MYHOSTNAME
+```
+If the system has a permanent IP address, it should be used instead of `127.0.1.1`.
+
+## Initramfs
+Creating a new initramfs is usually not required, because mkinitcpio was run on installation of the kernel package with pacstrap.
+For LVM, system encryption or RAID, modify mkinitcpio.conf(5) and recreate the initramfs image.
+```
+# mkinitcpio -P
+```
+
+## Root Password
+Set the root password
+```
+# passwd
+```
+
+## Adding Repositories - `multilib` and `AUR`
+Enable multilib and AUR repositories in `/etc/pacman.conf`. Open it with your editor of choice
+### Adding multilib repository
+Uncomment `multilib` (remove # from the beginning of the lines)
+### Add the following lines at the end of your `/etc/pacman.conf` to enable the AUR repo
+```
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+```
+### `pacman` easter eggs
+You can enable the "easter-eggs" in `pacman`, the package manager of archlinux.\
+Open `/etc/pacman.conf`, then find `# Misc options`. \
+To add colors to `pacman`, uncomment `Color`. Then add `Pac-Man` to `pacman` by adding `ILoveCandy` under the `Color` string:
+```
+Color
+ILoveCandy
+```
+### Update repositories and packages
+To check if you successfully added the repositories and enable the easter-eggs, execute:
+```
+# pacman -Syu
+```
+If updating returns an error, open the `pacman.conf` again and check for human errors. Yes, you f'ed up big time.
+
+## Add a user account
+Add a new user account. In this guide, I'll just use `MYUSERNAME` as the username of the new user aside from `root` account.
+```
+# useradd -m -g users -G wheel,storage,power,video,audio,rfkill,input -s /bin/bash MYUSERNAME
+```
+This will create a new user and its `home` folder. \
+Set the password of user `MYUSERNAME`:  
+```
+# passwd MYUSERNAME
+```
+## Add the new user to sudoers:
+If you want a root privilege in the future by using the `sudo` command, you should grant one yourself:
+```
+# EDITOR=vim visudo
+```
+Uncomment the line (Remove #):
+```
+# %wheel ALL=(ALL) ALL
+```
+
+## Install the boot loader
+I will be using `systemd-boot`
+```
+# bootctl --path=/boot install
+```
+Create a boot entry `/boot/loader/entries/arch.conf`, then add these lines:
+```
+title Arch Linux  
+linux /vmlinuz-linux  
+initrd  /initramfs-linux.img  
+options root=/dev/sda3 rw
+```
+If your `/` is not in `/dev/sda3`, make sure to change it. \
+
+Now update boot loader configuration
+```
+# vim /boot/loader/loader.conf
+```
+Delete all of its content, then replaced it by:
+```
+default arch.conf
+timeout 0
+console-mode max
+editor no
+```
+
+## Enable internet connection for the next boot
+To enable the network daemons on your next reboot, you need to enable `dhcpcd.service` for wired connection and `iwd.service` for a wireless one.
+```
+# systemctl enable dhcpcd iwd
 ```
