@@ -33,12 +33,10 @@ Now we can search for the rest of the desired packages
   - inetutils (ftp...)
   - openssh
   - qbittorrent
-  - 
 * Browsers
-  - Librewolf
-  - Google chrome
+  - librewolf
+  - google-chrome
   - w3m
-  - 
 * General
   - xclip
   - discord
@@ -60,7 +58,6 @@ Now we can search for the rest of the desired packages
   - texlive-core
   - masterpdfeditor-free
   - basket
-  - 
 * Multimedia
   - vlc
   - feh
@@ -71,12 +68,9 @@ Now we can search for the rest of the desired packages
   - audacity
   - ffmpeg
   - ffmpegyag
-  - 
-
 * Volume control
   - alsa-utils
   - pavucontrol
-
 * Terminal emulator
   - alacritty
   - kitty
@@ -99,6 +93,8 @@ Now we can search for the rest of the desired packages
   - cmake
   - meson
   - gcc
+  - r
+  - python
 * Fonts
   - Hack nerd font
   - Fira code
@@ -106,7 +102,6 @@ Now we can search for the rest of the desired packages
   - corestats
   - htop
   - hwinfo
-  - 
 * Bluetooth
   - bluez-utils
   - bluez
@@ -118,4 +113,49 @@ Now we can search for the rest of the desired packages
   - adminer
   - mycli
   - sqlite
-* 
+* Security
+  - nmap
+  - tcpdump
+  - john
+  - hashcat
+  - (add blackarch repo)
+* Screenlockers
+  - betterlockscreen
+  - i3lock
+
+First, we have to check for updates in our system
+```
+# sudo pacman -Syu
+```
+Now we need to install a display server/protocol, I will be installing a protocol (wayland) and a compositor (hyprland)
+```
+# yay -S wayland meson
+# cd /opt
+# git clone --recursive https://github.com/hyprwm/Hyprland
+# cd Hyprland
+# sudo make install
+```
+Then, we install gpu drivers. I have amd integrated graphics and nvidia dedicated gpu, but I will be installing the nvidia ones
+```
+# yay -S ...
+```
+Audio drivers
+```
+# pacman -S alsa-utils pulseaudio-alsa pulseaudio-bluetooth pulseaudio pavucontrol
+```
+File system tools
+```
+# pacman -S unrar unzip p7zip unarchiver gvfs-mtp libmtp ntfs-3g android-udev mtpfs xdg-user-dirs
+```
+Create home subdirectories (Downloads,Pictures...)
+```
+xdg-user-dirs-update
+```
+Install missing firmware. We check for them using the command mkinitcpio
+```
+# mkinitcpio -p linux
+```
+In my case, these are the missing ones
+```
+# yay wd719x-firmware aic94x-firmware linux-firmware-qlogic upd72020x-fw
+```
