@@ -138,6 +138,7 @@ Now we need to install a display server/protocol, I will be installing a protoco
 Then, we install gpu drivers. I have amd integrated graphics and nvidia dedicated gpu, but I will be installing the nvidia ones
 ```
 # yay -S ...
+https://www.reddit.com/r/linux_gaming/comments/f79trt/how_to_setup_a_ryzen_laptop_with_an_nvidia_gpu/
 ```
 Audio drivers
 ```
