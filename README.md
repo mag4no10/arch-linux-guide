@@ -15,7 +15,7 @@ The default console keymap is US. Available layouts can be listed with:
 ```
 # ls /usr/share/kbd/keymaps/**/*.map.gz
 ```
-This is changeable using two methods: \
+This is changeable using two methods: (better temporary for the moment) \
 \
 Temporary:
 ```
