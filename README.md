@@ -368,7 +368,19 @@ Then install grub on the EFI directory as shown
 ```
 # grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
 ```
-Finally install a grub configuration file
+Now run this command to show boot entries but Arch
+```
+# os-prober
+```
+If you have other os and it is not in the output, follow this steps:
+```
+# exit
+# cgdisk /dev/sda
+(now change the label of efi partition to boot and write changes)
+# vim /etc/default/grub
+(uncomment "GRUB_DISABLE_OS_PROBER=false" and exit)
+```
+Finally install the grub configuration file
 ```
 # grub-mkconfig -o /boot/grub/grub.cfg
 ```
