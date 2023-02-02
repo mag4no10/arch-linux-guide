@@ -184,7 +184,7 @@ swapon /dev/sda2
 ## Installation
 We are halfway done. Let's install the base linux packages with pacstrap
 ```
-# pacstrap /mnt base base-devel linux linux-firmware vim netctl
+# pacstrap /mnt base base-devel linux linux-firmware vim
 ```
 This will install ONLY ESSENTIAL PACKAGES. Once all is finished, you must install other apps in order to make a functional system. Here are a few examples:
 * userspace utilities for the management of file systems that will be used on the system:
@@ -266,6 +266,10 @@ Now open `/etc/hosts` to add matching entries to `hosts`
 127.0.1.1    MYHOSTNAME.localdomain	  MYHOSTNAME
 ```
 If the system has a permanent IP address, it should be used instead of `127.0.1.1`.
+Download this packages that will help ur later. 
+```
+# pacman -S netctl wpa_supplicant ifplugd
+```
 
 ## Initramfs
 Creating a new initramfs is usually not required, because mkinitcpio was run on installation of the kernel package with pacstrap.
