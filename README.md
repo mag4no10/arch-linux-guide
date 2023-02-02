@@ -235,19 +235,16 @@ Run hwclock to generate /etc/adjtime
 
 ## Localization
 Locale is the language that your system is going to use. This include characters, numbers and other specials symbols. \
-Possible options are located in `/etc/locale.gen`. Generate the locales by running:
-```
-# locale-gen
-```
-Now create `/etc/locale.config` and set the LANG variable accordingly
-```
-# echo "LANG=es_US.UTF-8" > /etc/locale/conf
-```
-If you used loadkeys earlier, you may make the layout persistent
+Possible options are located in `/etc/locale.gen`. \
+If you used loadkeys earlier, you may make the layout persistent \
+Open this file, scroll and uncomment your preferred locale. I'm using en_US.UTF-8 UTF-8
 ```
 # vim /etc/vconsole.conf
 ```
-KEYMAP=layout-of-your-choice
+Generate the locales by running:
+```
+# locale-gen
+```
 
 ## Network Configuration
 You can use this command to create a hostname
