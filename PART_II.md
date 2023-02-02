@@ -127,18 +127,16 @@ First, we have to check for updates in our system
 ```
 # sudo pacman -Syu
 ```
-Now we need to install a display server/protocol, I will be installing a protocol (wayland) and a compositor (hyprland)
+Now we need to install a display server/protocol, I will be installing xorg with awesomeWM
 ```
-# yay -S wayland meson
-# cd /opt
-# git clone --recursive https://github.com/hyprwm/Hyprland
-# cd Hyprland
-# sudo make install
+# pacman -S xorg
 ```
-Then, we install gpu drivers. I have amd integrated graphics and nvidia dedicated gpu, but I will be installing the nvidia ones
+Then, we install gpu drivers. I'll be installing nvidia ones, but for laptops with integrated and discrete gpu, this link will be useful
 ```
-# yay -S ...
 https://www.reddit.com/r/linux_gaming/comments/f79trt/how_to_setup_a_ryzen_laptop_with_an_nvidia_gpu/
+```
+```
+# pacman -S nvidia nvidia-utils nvidia-settings opencl-nvidia
 ```
 Audio drivers
 ```
