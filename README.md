@@ -184,7 +184,7 @@ swapon /dev/sda2
 ## Installation
 We are halfway done. Let's install the base linux packages with pacstrap
 ```
-# pacstrap /mnt base base-devel linux linux-firmware vim dhcpcd
+# pacstrap /mnt base base-devel linux linux-firmware vim netctl
 ```
 This will install ONLY ESSENTIAL PACKAGES. Once all is finished, you must install other apps in order to make a functional system. Here are a few examples:
 * userspace utilities for the management of file systems that will be used on the system:
