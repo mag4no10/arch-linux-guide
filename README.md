@@ -245,6 +245,10 @@ Generate the locales by running:
 ```
 # locale-gen
 ```
+Next, create a new locale configuration file and save the locale as shown.
+```
+# echo "LANG=EN_US.UTF-8" > /etc/locale.conf
+```
 
 ## Network Configuration
 You can use this command to create a hostname
