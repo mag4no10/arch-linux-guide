@@ -105,6 +105,7 @@ Other partitions like /opt/ or /home/ can be create separately.
 | /mnt        | /dev/root_partition       | Linux x86-64 root (/) | Remainder of the device | 
 
 Let's use sda as our disk.
+*DISCLAIMER* IF YOU HAVE ALREADY AN EXISTING OPERATING SYSTEM AND YOU ARE PLANNING TO DUAL-BOOT, DO NOT CLEAN THE MAIN DRIVE. \
 * First we have to clean the main drive
 ```
 # gdisk /dev/sda
@@ -119,7 +120,7 @@ Let's use sda as our disk.
 Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions.
 
 + Create the `boot` partition
-
+	- If you already have a efi partition that is being used by windows or other os, do not create another one. Just mount the existing one to /mnt/efi
 	- Hit New from the options at the bottom.
 	- Just hit enter to select the default option for the first sector.
 	- Now the partion size - Arch wiki recommends 200-300 MB for the boot + size. Let’s make 1GiB in case we need to add more OS to our machine. I’m gonna assign mine with 1024MiB. Hit enter.
@@ -170,7 +171,7 @@ Mount the root volume to /mnt
 ```
 Create a boot mount point and assign it to efi partition
 ```
-mount --mkdir /dev/sda1 /mnt/boot
+mount --mkdir /dev/sda1 /mnt/efi
 ```
 Now create a home mount point and assign it to home partition
 ```
@@ -291,7 +292,6 @@ Uncomment `multilib` (remove # from the beginning of the lines)
 ### Add the following lines at the end of your `/etc/pacman.conf` to enable the AUR repo
 ```
 [archlinuxfr]
-SigLevel = Never
 Server = http://repo.archlinux.fr/$arch
 ```
 ### `pacman` easter eggs
@@ -330,7 +330,8 @@ Uncomment the line (Remove #):
 ```
 
 ## Install the boot loader
-I will be using `systemd-boot`
+You can install `systemd-boot` or `grub`, here's the installation of both:
+###systemd-boot
 ```
 # bootctl --path=/boot install
 ```
@@ -353,6 +354,23 @@ default arch.conf
 timeout 0
 console-mode max
 editor no
+```
+###grub
+Install base grub packages
+```
+# pacman -S grub efibootmgr
+```
+If you dual-boot with other operating systems, you may consider installing os-prober
+```
+# pacman -S os-prober
+```
+Then install grub on the EFI directory as shown
+```
+# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+```
+Finally install a grub configuration file
+```
+# grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## Enable internet connection for the next boot
