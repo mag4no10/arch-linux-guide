@@ -158,5 +158,5 @@ Install missing firmware. We check for them using the command mkinitcpio
 ```
 In my case, these are the missing ones
 ```
-# yay wd719x-firmware aic94x-firmware linux-firmware-qlogic upd72020x-fw
+# yay -S ast-firmware wd719x-firmware aic94xx-firmware linux-firmware-qlogic upd72020x-fw
 ```
