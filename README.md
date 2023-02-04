@@ -397,4 +397,4 @@ Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. Yo
 Finally, `reboot`. \
 
 ## Next steps
-Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/){:target="_blank"}
+Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/)
