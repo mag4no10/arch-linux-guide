@@ -92,11 +92,11 @@ When recognized by the live system, disks are assigned to a block device such as
 # lsblk
 ```
 Results ending in rom, loop or airoot may be ignored.
-We need 2 partitions:
+We need at least 2 partitions:
 * One partition for the root directory /
 * For booting in UEFI mode: an EFI system partition. \
 Swap partition is optional, but it's advisable to create it aswell
-Other partitions like /opt/ or /home/ can be create separately.
+Other partitions like /var /opt or /home can be create separately.
 
 | Mount point | Partition                 |  Partition Type       | Suggested size          | 
 |-------------|---------------------------|-----------------------|-------------------------| 
