@@ -395,4 +395,6 @@ To enable the network daemons on your next reboot, you need to enable `dhcpcd.se
 ## Exit chroot and reboot:  
 Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. You can also unmount all mounted partition after this. 
 Finally, `reboot`. \
-Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/) \
+
+## Next steps
+Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/)
