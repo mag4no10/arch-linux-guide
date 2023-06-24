@@ -34,7 +34,13 @@ To verify the boot mode, list the efivars directory:
 If the command shows some directories without any errors, then the system is booted in UEFI mode. Otherwise, the system may be booted in BIOS mode.
 
 ## Connect to the Internet
-Use to see all network interfaces
+First, try pinging in order to know if we are already connected to the Internet
+```
+ping archlinux.org
+```
+If we are connected, you may skip this step [*](https://github.com/mag4no10/arch-linux-guide#update-the-system-clock)
+
+Numerate all network interfaces
 ```
 # ip link
 ```
