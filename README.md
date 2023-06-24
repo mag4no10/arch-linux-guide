@@ -31,7 +31,7 @@ To verify the boot mode, list the efivars directory:
 ```
 # ls /sys/firmware/efi/efivars
 ```
-If the command shows the directory without error, then the system is booted in UEFI mode. If the directory does not exist, the system may be booted in BIOS (or CSM) mode.
+If the command shows some directories without any errors, then the system is booted in UEFI mode. Otherwise, the system may be booted in BIOS mode.
 
 ## Connect to the Internet
 Use to see all network interfaces
