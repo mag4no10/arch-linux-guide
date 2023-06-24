@@ -84,7 +84,7 @@ If it is desirable to change the timezone, use this commands:
 ```
 Then apply the changes
 ```
-# timedatactl set-timezone "Asia/Kolkata"
+# timedatactl set-timezone "Europe/Dublin"
 ```
 \
 To change Time and Date
