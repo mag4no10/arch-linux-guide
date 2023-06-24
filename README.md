@@ -118,7 +118,7 @@ Let's use sda as our disk.
 ```
 # gdisk /dev/sda
 ```
-* Press <kbd>x</kbd> to enter **expert mode**. Then press <kbd>z</kbd> to *zap* our drive. Then hit <kbd>y</kbd> when prompted about wiping out GPT and blanking out MBR. Note that this will ***zap*** your entire drive so your data will be gone - reduced to atoms after doing this. THIS. CANNOT. BE. UNDONE. \
+* Press <kbd>x</kbd> to enter **expert mode**. Then press <kbd>z</kbd> to *zap* our drive. Then hit <kbd>y</kbd> when prompted about wiping out GPT and blanking out MBR. Note that this will ***zap*** your entire drive so your data will be gone - reduced to atoms after doing this. THIS. CANNOT. BE. UNDONE.
 
 * Now we are going to start partitioning our filesystem
 ```
@@ -126,6 +126,7 @@ Let's use sda as our disk.
 ```
 * Press <kbd>Return</kbd> when warned about damaged GPT.
 Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions.
+**To select all avaiable space, just simply leave sector space blank**
 
 + Create the `boot` partition
 	- If you already have a efi partition that is being used by windows or other os, do not create another one. Just mount the existing one to /mnt/efi
