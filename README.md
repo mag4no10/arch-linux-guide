@@ -71,10 +71,19 @@ Finally check if the connection is established by sending one ICMP packet
 ``` 
 If you get Unknown host or Destination host unreachable response, you are not online yet. Check last steps
 
+## Update GPT keys
+```
+# pacman-key --init
+# pacman-key --populate archlinux
+```
+# Easy Instalation
+You may use the command ``` archinstall ``` to install linux easily. If ur goal is to learn how linux works, keep reading.
+
+# Hard Installation
 ## Update the system clock
 This command shows the system clock.
 ```
-timedatectl status
+# timedatectl status
 ```
 If it is desirable to change the timezone, use this commands:
 ```
@@ -84,7 +93,7 @@ If it is desirable to change the timezone, use this commands:
 ```
 Then apply the changes
 ```
-# timedatactl set-timezone "Europe/Dublin"
+# timedatectl set-timezone "Europe/Dublin"
 ```
 \
 To change Time and Date
@@ -125,8 +134,8 @@ Let's use sda as our disk.
 # cgdisk /dev/sda
 ```
 * Press <kbd>Return</kbd> when warned about damaged GPT.
-Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions.
-**To select all avaiable space, just simply leave sector space blank**
+Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions. \
+**To select all available space, just simply leave sector space blank**
 
 + Create the `boot` partition
 	- If you already have a efi partition that is being used by windows or other os, do not create another one. Just mount the existing one to /mnt/efi
@@ -261,13 +270,13 @@ Next, create a new locale configuration file and save the locale as shown.
 ```
 
 ## Network Configuration
-You can use this command to create a hostname
-```
-# hostnamectl set-hostname myhostname
-```
-Alternatively, you can create and edit the hostname file
+You can create and edit the hostname file
 ```
 # echo "IncredibleHostname" > /etc/hostname
+```
+Alternatively, and not in chroot mode, you can change it later
+```
+# hostnamectl set-hostname myhostname 
 ```
 Now open `/etc/hosts` to add matching entries to `hosts`
 ```
@@ -340,7 +349,7 @@ Uncomment the line (Remove #):
 
 ## Install the boot loader
 You can install `systemd-boot` or `grub`, here's the installation of both:
-###systemd-boot
+### systemd-boot
 ```
 # bootctl --path=/boot install
 ```
@@ -364,7 +373,7 @@ timeout 0
 console-mode max
 editor no
 ```
-###grub
+### grub
 Install base grub packages
 ```
 # pacman -S grub efibootmgr
@@ -394,16 +403,17 @@ Finally install the grub configuration file
 # grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Enable internet connection for the next boot
+## Exit chroot:  
+Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. You can also unmount all mounted partition after this. 
 
+## Enable internet connection for the next boot
 To enable the network daemons on your next reboot, you need to enable `dhcpcd.service` for wired connection and `iwd.service` for a wireless one.
 ```
 # systemctl enable dhcpcd iwd
 ```
 
-## Exit chroot and reboot:  
-Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. You can also unmount all mounted partition after this. 
-Finally, `reboot`. \
+## Reboot
+Finally, `reboot`.
 
 ## Next steps
 Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/)
