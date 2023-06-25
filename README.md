@@ -87,9 +87,9 @@ This command shows the system clock.
 ```
 If it is desirable to change the timezone, use this commands:
 ```
-# timedatactl list-timezones | grep "Europe/"  | less
-# timedatactl list-timezones | grep "Asia/"    | less
-# timedatactl list-timezones | grep "America/" | less
+# timedatectl list-timezones | grep "Europe/"  | less
+# timedatectl list-timezones | grep "Asia/"    | less
+# timedatectl list-timezones | grep "America/" | less
 ```
 Then apply the changes
 ```
