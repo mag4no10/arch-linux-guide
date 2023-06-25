@@ -2,12 +2,24 @@
 After rebooting, we will already got our functional system. So now we will be installing our packages. \
 
 ## Connect to the Internet
-When we installed base packages, we also installed vim and dhcpcd, so now we can just enable dhcpcd
+First we check if we have connection
 ```
-# systemctl start dhcpcd
-# reboot
+# ping archlinux.org
 ```
-Now we have a connection established
+If it outputs a name resolution related error, we may use iwd and dhcpcd to connect to Internet \
+```
+# iwctl station wlan0 connect "WIFI_SSID"
+# iwctl station wlan0 show
+```
+if state is connected, we got our connection, not it's time to assign an ip using dhcp daemon
+```
+# sudo systemctl enable dhcpcd
+# sudo dhcpcd
+```
+And we check for our ip
+```
+# ip a
+```
 
 ## Installing packages
 [this](https://wiki.archlinux.org/title/List_of_applications) is a list of packages that we can install in our system. Feel free to check them out and choose your preferences. \
