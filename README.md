@@ -327,10 +327,11 @@ To check if you successfully added the repositories and enable the easter-eggs, 
 ```
 If updating returns an error, open the `pacman.conf` again and check for human errors. Yes, you f'ed up big time.
 
-## Add a user account
+## Add a user account and a user group
 Add a new user account. In this guide, I'll just use `MYUSERNAME` as the username of the new user aside from `root` account.
 ```
-# useradd -m -g users -G wheel,storage,power,video,audio,rfkill,input -s /bin/bash MYUSERNAME
+# groupadd MYUSERNAME
+# useradd -m -g users -G wheel,storage,power,video,audio,rfkill,input,MYUSERNAME -s /bin/bash MYUSERNAME
 ```
 This will create a new user and its `home` folder. \
 Set the password of user `MYUSERNAME`:  
