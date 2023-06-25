@@ -139,28 +139,11 @@ First, we have to check for updates in our system
 ```
 # sudo pacman -Syu
 ```
-Now we need to install a display server/protocol, I will be installing xorg with awesomeWM
-```
-# pacman -S xorg
-```
-Then, we install gpu drivers. I'll be installing nvidia ones, but for laptops with integrated and discrete gpu, this link will be useful
-```
-https://www.reddit.com/r/linux_gaming/comments/f79trt/how_to_setup_a_ryzen_laptop_with_an_nvidia_gpu/
-```
-```
-# pacman -S nvidia nvidia-utils nvidia-settings opencl-nvidia
-```
-Audio drivers
-```
-# pacman -S alsa-utils pulseaudio-alsa pulseaudio-bluetooth pulseaudio pavucontrol
-```
-File system tools
-```
-# pacman -S unrar unzip p7zip unarchiver gvfs-mtp libmtp ntfs-3g android-udev mtpfs xdg-user-dirs
-```
+
 Create home subdirectories (Downloads,Pictures...)
 ```
-xdg-user-dirs-update
+# yay -S xdg-user-dirs
+# xdg-user-dirs-update
 ```
 Install missing firmware. We check for them using the command mkinitcpio
 ```
@@ -170,3 +153,25 @@ In my case, these are the missing ones
 ```
 # yay -S ast-firmware wd719x-firmware aic94xx-firmware linux-firmware-qlogic upd72020x-fw
 ```
+
+## Installing a compositor / window manager
+In this setup, I will install Wayland protocol + Hyprland. Beware that nvidia gpus got awful performance and compatibility with wayland, but thanks to [sol](https://github.com/SolDoesTech), it aparently has some support \
+I will split the process in various stages in order to make it clear
+
+### STAGE I (prework)
+```
+# yay -S qt5-wayland qt5ct qt6-wayland qt6ct qt5-svg qt5-quickcontrols2 qt5-graphicaleffects gtk3 polkit-gnome pipewire wireplumber jq wl-clipboard cliphist python-requests pacman-contrib
+```
+### STAGE II (personal preference packages)
+```
+# yay -S globalprotect-openconnect-git networkmanager tor curl wget gnu-netcat inetutils openssh qbittorrent librewolf-bin google-chrome xclip discord pfetch libreoffice-fresh flameshot tar zip unzip rar unrar gzip fbxkb virtualbox tree asciidoctor texlive-core vlc feh gimp lollypop audacity ffmpeg ffmpegyag alsa-utils pavucontrol fish starship less more vim nvim gedit code ranger caja make cmake gcc meson r python ttf-hack-nerd ttf-firacode-nerd corestats btop hwinfo nmap tcpdump john hashcat   
+```
+### STAGE III (main packages)
+```
+# yay -S 
+```
+### STAGE IV (nvidia gpus only)
+```
+# yay -S linux-headers nvidia-dkms nvidia-settings libva libva-nvidia-driver-git
+```
+[Useful link to ppl with amd apu + nvidia gpu](https://www.reddit.com/r/linux_gaming/comments/f79trt/how_to_setup_a_ryzen_laptop_with_an_nvidia_gpu/)
