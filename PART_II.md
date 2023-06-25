@@ -168,7 +168,7 @@ I will split the process in various stages in order to make it clear
 ```
 ### STAGE III (main packages)
 ```
-# yay -S 
+# yay -S kitty mako waybar swww swaylock-effects wofi wlogout xdg-desktop-portal-hyprland swappy grim slurp mpv pamixer pavucontrol brightnessctl bluez bluez-utils blueman network-manager-applet gvfs thunar thunar-archive-plugin file-roller papirus-icon-theme noto-fonts-emoji lxappearance xfce4-settings nwg-look-bin sddm    
 ```
 ### STAGE IV (nvidia gpus only)
 ```
