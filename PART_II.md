@@ -88,7 +88,7 @@ Now we can search for the rest of the desired packages
   - kitty
   - xterm
 * Command line shell
-  - Fish
+  - fish
 * Terminal pagers
   - less
   - more
@@ -112,7 +112,7 @@ Now we can search for the rest of the desired packages
   - Fira code
 * System
   - corestats
-  - htop
+  - btop
   - hwinfo
 * Bluetooth
   - bluez-utils
