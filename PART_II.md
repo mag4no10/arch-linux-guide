@@ -175,3 +175,42 @@ I will split the process in various stages in order to make it clear
 # yay -S linux-headers nvidia-dkms nvidia-settings libva libva-nvidia-driver-git
 ```
 [Useful link to ppl with amd apu + nvidia gpu](https://www.reddit.com/r/linux_gaming/comments/f79trt/how_to_setup_a_ryzen_laptop_with_an_nvidia_gpu/)
+Update config
+```
+# sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+# mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img
+# echo -e "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
+```
+### STAGE V
+Non-nvidia users:
+```
+# yay -S hyprland
+```
+Nvidia users:
+```
+# yay -S hyprland-nvidia
+# echo -e "\nsource = ~/.config/hypr/env_var_nvidia.conf" >> ~/.config/hypr/hyprland.conf
+```
+### STAGE VI (asus rog users only)
+Add rog repository \
+First add key
+```
+# sudo pacman-key --recv-keys 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+# sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+```
+Add repository to /etc/pacman.conf
+```
+echo -e "\n[g14]\nSigLevel = Optional TrustAll\nServer = https://arch.asus-linux.org"
+```
+Update
+```
+# yay -Syu
+```
+Install rog packages and enabling its services
+```
+# yay -S asusctl supergfxctl rog-control-center
+# systemctl enable --now power-profiles-daemon.service
+# systemctl enable --now supergfxd
+```
