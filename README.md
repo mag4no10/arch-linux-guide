@@ -77,7 +77,7 @@ If you get Unknown host or Destination host unreachable response, you are not on
 # pacman-key --populate archlinux
 ```
 # Easy Instalation
-You may use the command [archinstall](https://github.com/archlinux/archinstall) or [anarchy](https://anarchyinstaller.gitlab.io/) to install linux easily. If ur goal is to learn how linux works, keep reading.
+You may use [archinstall](https://github.com/archlinux/archinstall) or [anarchy](https://anarchyinstaller.gitlab.io/) to install linux easily. If ur goal is to learn how linux actually works behind the scene, keep reading.
 
 # Hard Installation
 ## Update the system clock
