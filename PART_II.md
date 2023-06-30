@@ -214,3 +214,11 @@ Install rog packages and enabling its services
 # systemctl enable --now power-profiles-daemon.service
 # systemctl enable --now supergfxd
 ```
+
+
+
+AÑADIR EN HYTPRLAND.CONF
+  KEYMAP
+  NVIDIA | NONVNDIA ENV
+  monitor=DP-1,1920x1080@144,0x0,1
+  
