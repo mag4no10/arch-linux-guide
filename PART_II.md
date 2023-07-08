@@ -217,10 +217,13 @@ Install rog packages and enabling its services
 
 
 
-AÑADIR EN HYTPRLAND.CONF
-  KEYMAP
-  NVIDIA | NONVNDIA ENV
-  monitor=DP-1,1920x1080@144,0x0,1
-  amd microcode and theme grub
-  add parallel downloads to pacman.conf
+TODO:
+  AÑADIR EN HYTPRLAND.CONF
+    KEYMAP \
+    NVIDIA | NONVNDIA ENV \
+    monitor=DP-1,1920x1080@144,0x0,1 \
+    
+  amd microcode and theme grub \
+  add parallel downloads to pacman.conf \
+  buscar que errores hay en el script de instalacion
   
