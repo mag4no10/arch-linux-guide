@@ -258,7 +258,7 @@ Possible options are located in `/etc/locale.gen`. \
 If you used loadkeys earlier, you may make the layout persistent \
 Open this file, scroll and uncomment your preferred locale. I'm using en_US.UTF-8 UTF-8
 ```
-# vim /etc/vconsole.conf
+# vim /etc/locale.gen
 ```
 Generate the locales by running:
 ```
