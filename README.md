@@ -69,7 +69,10 @@ Finally check if the connection is established by sending one ICMP packet
 ```
 # ping -c1 archlinux.org
 ``` 
-If you get Unknown host or Destination host unreachable response, you are not online yet. Check last steps
+If you get Unknown host or Destination host unreachable response, you are not online yet. Use dhcpcd tool to assign an ip to your device
+```
+# dhcpcd
+``` 
 
 ## Update GPT keys
 ```
