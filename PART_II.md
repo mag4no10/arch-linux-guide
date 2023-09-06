@@ -11,7 +11,7 @@ If it outputs a name resolution related error, we may use iwd and dhcpcd to conn
 # iwctl station wlan0 connect "WIFI_SSID"
 # iwctl station wlan0 show
 ```
-if state is connected, we got our connection, not it's time to assign an ip using dhcp daemon
+if state is connected, we got our connection, now it's time to assign an ip using dhcp daemon
 ```
 # sudo systemctl enable dhcpcd
 # sudo dhcpcd
