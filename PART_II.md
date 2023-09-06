@@ -222,8 +222,10 @@ TODO: \
     KEYMAP \
     NVIDIA | NONVNDIA ENV \
     monitor=DP-1,1920x1080@144,0x0,1 \
-    ufw \
+    https://github.com/SolDoesTech/HyprV4/blob/main/HyprV/hypr/hyprland.conf
     
+    
+  ufw \
   amd microcode and theme grub \
   add parallel downloads to pacman.conf \
   buscar que errores hay en el script de instalacion
