@@ -229,4 +229,5 @@ TODO: \
   amd microcode and theme grub \
   add parallel downloads to pacman.conf \
   buscar que errores hay en el script de instalacion
+  issues with resolution, xrandr --listmonitors, xrandr --output <OUTPUT> --mode <RESOLUTION>, if problem, cvt
   
