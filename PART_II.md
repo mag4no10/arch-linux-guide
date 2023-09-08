@@ -231,5 +231,6 @@ TODO: \
   buscar que errores hay en el script de instalacion \
   issues with resolution, xrandr --listmonitors, xrandr --output <OUTPUT> --mode <RESOLUTION>, if problem, cvt \
   install batcat \
-  aliases
+  aliases \
+  locales
   
