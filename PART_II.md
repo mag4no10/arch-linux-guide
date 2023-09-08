@@ -234,4 +234,5 @@ TODO: \
   aliases \
   locales \
   grub-silent \
-  reflector
+  reflector \ 
+  lsd
