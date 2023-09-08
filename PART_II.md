@@ -233,4 +233,5 @@ TODO: \
   install batcat \
   aliases \
   locales \
-  grub-silent
+  grub-silent \
+  reflector
