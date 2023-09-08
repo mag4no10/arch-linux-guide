@@ -232,5 +232,5 @@ TODO: \
   issues with resolution, xrandr --listmonitors, xrandr --output <OUTPUT> --mode <RESOLUTION>, if problem, cvt \
   install batcat \
   aliases \
-  locales
-  
+  locales \
+  grub-silent
