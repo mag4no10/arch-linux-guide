@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cp -r ~/.config/{hypr,kitty,starship.toml,waybar} ~/Github/arch-linux-guide/config/
+cp ~/.bashrc ~/.bash_aliases ~/.bash_pfetch ~/Github/arch-linux-guide/home/
+sleep 0.2
+echo "[+] Files copied succesfully"
+sleep 0.2
+ps aux | pgrep github-desktop 2> /dev/null 1> /dev/null
+if ! [ $? -eq 0 ]; then
+    echo "[+] Openning github-desktop"
+    exec github-desktop 2> /dev/null 1> /dev/null & disown
+    sleep 1.75
+fi
+echo "[+] Program terminated!"

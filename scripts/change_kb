@@ -1,0 +1,36 @@
+#!/bin/bash
+
+function printHelp() { 
+    echo """
+    static     set a single static colour
+    breathe    pulse between one or two colours
+    strobe     strobe through all colours
+    rainbow    rainbow cycling in one of four directions
+    pulse      set a rapid pulse
+    """
+}
+
+function wrongParam() {
+    echo "Wrong use of params\n\n"
+    printHelp
+}
+
+function changeMode() {
+    asusctl led-mode $1
+}
+
+case $1 in 
+    -h | --help | "" )
+        printHelp
+    ;;
+
+    static | breathe | strobe | rainbow | pulse )
+        changeMode $1
+    ;;
+
+    * )
+        wrongParam
+    ;;
+esac
+
+exit 0
