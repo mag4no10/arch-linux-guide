@@ -10,10 +10,10 @@ alias lla="ls -l -a"
 
 alias bat="bat -P"
 
-alias kb0="sudo chown atenea:atenea /sys/class/leds/asus::kbd_backlight/brightness && echo \"0\" > /sys/class/leds/asus::kbd_backlight/brightness"
-alias kb1="sudo chown atenea:atenea /sys/class/leds/asus::kbd_backlight/brightness && echo \"1\" > /sys/class/leds/asus::kbd_backlight/brightness"
-alias kb2="sudo chown atenea:atenea /sys/class/leds/asus::kbd_backlight/brightness && echo \"2\" > /sys/class/leds/asus::kbd_backlight/brightness"
-alias kb3="sudo chown atenea:atenea /sys/class/leds/asus::kbd_backlight/brightness && echo \"3\" > /sys/class/leds/asus::kbd_backlight/brightness"
+alias kb0="sudo chown $USER:$USER /sys/class/leds/asus::kbd_backlight/brightness && echo \"0\" > /sys/class/leds/asus::kbd_backlight/brightness"
+alias kb1="sudo chown $USER:$USER /sys/class/leds/asus::kbd_backlight/brightness && echo \"1\" > /sys/class/leds/asus::kbd_backlight/brightness"
+alias kb2="sudo chown $USER:$USER /sys/class/leds/asus::kbd_backlight/brightness && echo \"2\" > /sys/class/leds/asus::kbd_backlight/brightness"
+alias kb3="sudo chown $USER:$USER /sys/class/leds/asus::kbd_backlight/brightness && echo \"3\" > /sys/class/leds/asus::kbd_backlight/brightness"
 
 alias kb="change_kb"
 
