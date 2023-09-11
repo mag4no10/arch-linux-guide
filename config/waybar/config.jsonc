@@ -1,8 +1,33 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 50, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "layer": "top",
+    "position": "top",
+    "height": "16",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["hyprland/workspaces"],
+    
+    
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "format-active": " {name} ",
+        "on-click": "activate"
+    }
+
+}
+
+
+
+
+
+/*
+{
+    "layer": "top",
+    "position": "top",
+    "height": 50,
+    // "width": 1280,
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     // "margin-left":25,
@@ -10,8 +35,8 @@
     "margin-bottom":-11,
     //"margin-top":5,
     "modules-left": ["wlr/workspaces"],
-    "modules-right": ["temperature","network","battery","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
-    "modules-center": ["custom/dynamic_pill"],
+    //"modules-right": ["temperature","network","battery","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
+    //"modules-center": ["custom/dynamic_pill"],
     // Modules configuration
 
 
@@ -61,10 +86,10 @@
             "unlocked": ""
         }
     },
-    "wlr/workspaces": {
-        //"format": "{name}",
-        //"format-active": " {name} ",
-        //"on-click": "activate"
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "format-active": " {name} ",
+        "on-click": "activate"
         // "format-icons":{
         //     "10":"10"
         // }
@@ -189,4 +214,4 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
-}
+}*/
