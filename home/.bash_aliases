@@ -26,3 +26,5 @@ alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias update="yay -Syu --noconfirm"
 
 alias mirrors="sudo reflector --verbose --latest 5 --country 'Spain' --age 24 --sort rate --save /etc/pacman.d/mirrorlist"
+
+alias ull_connect="sudo openconnect --protocol=gp --quiet --background --user=alu0101470948 vpn.ull.es"
