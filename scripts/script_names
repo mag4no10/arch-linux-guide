@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo -n """
+	kb{0,1,2,3}:		Changes the keyboard's brightness level
+	kb / change_kb:		Changes the keyboard's brightness effects		
+	start_waybar:		Kill previous bar and runs another one
+	update_dotfiles: 	Update system dotfiles and opens github-desktop
+	utils:				Various utilities
+"""
