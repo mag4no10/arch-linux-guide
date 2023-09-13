@@ -5,4 +5,4 @@ if [ $? -eq 0 ]; then
     killall waybar
 fi
 
-waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css > /dev/null 2>&1 & disown
+waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css 2>&1 1> /dev/null  & disown
