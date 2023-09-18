@@ -20,7 +20,17 @@ function changeMode() {
 }
 
 function changeKeymap() {
-    # https://www.tutorialspoint.com/how-to-find-and-replace-text-in-a-file-on-linux
+    keymap=$(cat ~/.config/hypr/hyprland.conf | grep "kb_layout =.*" | awk '{print $NF}')
+    if [ $keymap == "us" ]; then
+        sudo localectl set-keymap --no-convert es
+        sed -i '20s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
+    elif [ $keymap == "es" ]; then
+        sudo localectl set-keymap --no-convert us
+        sed -i '20s/.*/    kb_layout = us/' ~/.config/hypr/hyprland.conf
+    else
+        sudo localectl set-keymap --no-convert es
+        sed -i '20s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
+    fi
 }
 
 case $1 in 
@@ -32,8 +42,8 @@ case $1 in
         changeMode $1
     ;;
 
-    es | us )
-        changeKeymap $1
+    --altkeymap )
+        changeKeymap
     ;;
 
     * )
