@@ -7,26 +7,37 @@ window#waybar {
     background-color: transparent;
 }
 
+#clock {
+    padding: 0 10px;
+    border-radius: 15px;
+    background: #11111b;
+    color: #b4befe;
+    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 
+    font-weight: bolder;
+}
 
-#workspaces button label{
+#workspaces button label {
     color: 	#89b4fa ;
     font-weight: bolder;
 }
 
-#workspaces button.active label{
+#workspaces button.active label {
     color: #11111b;
     font-weight: bolder;
 }
 
-#workspaces{
+#workspaces {
     background-color: transparent;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
     margin-left: 25px;
 }
-#workspaces button{
+#workspaces button {
     box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
     background-color: #11111b ;
     border-radius: 15px;
@@ -39,7 +50,7 @@ window#waybar {
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
 }
 
-#workspaces button.active{
+#workspaces button.active {
     padding-right: 20px;
     box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
     padding-left: 20px;
@@ -55,10 +66,9 @@ window#waybar {
 
 
 
-
 /*
 * {
-    font-family: FiraCode , Noto Sans,FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FiraCode, Noto Sans ,FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
 
