@@ -1,0 +1,30 @@
+#!/bin/bash
+
+curr_background=$(swww query | awk '{print $NF}'  | tr "/" " " | awk '{print $NF}')
+background_dir="/home/atenea/Pictures/background"
+background_list=$(ls $background_dir)
+last=$(echo $background_list | awk '{print $NF}')
+first=$(echo $background_list | awk '{print $1}')
+
+found=false
+for it in $background_list; do 
+    if [ $it == $curr_background ]; then
+        $found = true
+        continue;
+    fi
+    if [ "$found"  == "true" ]; then
+        new_bg=$background_dir
+        new_bg+="/"
+        new_bg+=$it
+        
+        swww img $new_bg --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
+        $found=false
+        break;
+    fi
+    #if [ $it == $last ]; then
+    #    swww img $first --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
+    #    break;
+    #fi
+done
+
+exit 0

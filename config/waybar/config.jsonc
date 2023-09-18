@@ -6,10 +6,16 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left":[],
+    "modules-left":["custom/change_bg"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right":["clock"],
     
+    "custom/change_bg": {
+        "format":"{}",
+        "on-click": "~/Scripts/change_bg"
+        // "interval": 1,
+        //"on-click": "~/.config/hypr/scripts/tools/expand cycle"
+    },
     
     "hyprland/workspaces": {
         "format": "{name}",
