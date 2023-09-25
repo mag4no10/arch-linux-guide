@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -r ~/.config/{hypr,kitty,starship.toml,waybar} ~/Github/arch-linux-guide/config/
+cp -r ~/.config/{hypr,kitty,starship.toml,waybar,lvim} ~/Github/arch-linux-guide/config/
 cp ~/.bashrc ~/.bash_aliases ~/.bash_pfetch ~/Github/arch-linux-guide/home/
 cp ~/Scripts/* ~/Github/arch-linux-guide/scripts
 sleep 0.2

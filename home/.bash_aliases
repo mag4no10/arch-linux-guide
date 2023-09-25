@@ -8,7 +8,7 @@ alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -l -a"
 
-# add a script name reminder
+alias clear="tput reset"
 
 alias bat="bat -P"
 

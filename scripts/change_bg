@@ -8,6 +8,7 @@ first=$(echo $background_list | awk '{print $1}')
 
 found=false
 for it in $background_list; do 
+: << COMMENT
     if [ $it == $curr_background ]; then
         $found = true
         #echo $it
@@ -24,6 +25,9 @@ for it in $background_list; do
         swww img $first --transition-type grow --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
         break;
     fi
+COMMENT
+    echo $it
+    
 done
 
 exit 0
