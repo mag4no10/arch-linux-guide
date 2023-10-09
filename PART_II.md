@@ -234,6 +234,6 @@ TODO: \
   aliases \
   locales \
   grub-silent \
-  reflector \ 
+  reflector \
   lsd \
   bluetooth -> yay -S bluez bluez-utils pulseaudio-bluetooth && reboot
