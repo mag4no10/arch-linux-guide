@@ -6,16 +6,27 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left":["custom/change_bg"],
+    "modules-left":["custom/change_bg", "custom/screenshot"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right":["clock"],
+    "modules-right":["backlight","network","pulseaudio","temperature","cpu","memory","battery","clock"],
     
     "custom/change_bg": {
         "format":"{}",
-        "on-click": "~/Scripts/change_bg"
+        "exec": "echo \"            \"",
+        "on-click": "/home/atenea/Scripts/change_bg",
         // "interval": 1,
         //"on-click": "~/.config/hypr/scripts/tools/expand cycle"
+        "tooltip": "false"
     },
+
+    "custom/screenshot": {
+        "format": "{}",
+        "on-click-left": "",
+        "on-click-right": "",
+        "tooltip": "false"
+    },
+
+
     
     "hyprland/workspaces": {
         "format": "{name}",
@@ -25,7 +36,67 @@
         "sort-by-number": true
     },
 
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "scroll-step": "2"
+    },
 
+    "network": {
+        //"interface": "wlan0",
+        //"format": "{ifname}",
+        "format-wifi": "{essid} ",
+        "format-ethernet": "Wired ",
+        "format-disconnected": "Disconnected",
+        //"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "IP: {ipaddr}\nSignal: {signalStrength}%\nDownSpeed: {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "IP: {ipaddr}/{cidr}\nDownSpeed: {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 15
+    },
+
+    "pulseaudio": {
+        "format": "{volume} ",
+        "format-bluetooth": "{volume}% ",
+        "format-bluetooth-muted": "{volume}% ",
+        "format-muted": "{volume} ",
+        "on-click-right": "pavucontrol",
+        "on-click": "amixer -D pulse set Master 1+ toggle"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C ",
+        "interval": 1
+    },
+
+    "cpu": {
+        "interval": 1,
+        "max-length": 10,
+        "format": "{usage}% "
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "max-length": 10,
+        "interval": 1
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25    
+    },
 
     "clock": {
         "format": "  {:%H:%M} ",

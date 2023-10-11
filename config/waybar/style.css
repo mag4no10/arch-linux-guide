@@ -1,33 +1,66 @@
 * {
     font-family: FiraCode , Noto Sans, FontAwesome, HackNerd, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 window#waybar {
     background-color: transparent;
 }
 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#custom-change_bg,
+#custom-screenshot,
+#workspaces,
+#backlight,
+#network,
+#pulseaudio,
+#temperature,
+#cpu,
+#memory,
+#battery,
 #clock {
     padding: 0 10px;
     border-radius: 15px;
-    background: #11111b;
-    color: #b4befe;
-    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+    background-color: #cdd6f4;
+    color: #516079;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-
     font-weight: bolder;
+}
+
+
+#custom-change_bg {
+    background: rgb(245,194,231);
+    background: linear-gradient(45deg, rgba(245,194,231,1) 0%, rgba(203,166,247,1) 0%, rgba(243,139,168,1) 13%, rgba(235,160,172,1) 26%, rgba(250,179,135,1) 34%, rgba(249,226,175,1) 49%, rgba(166,227,161,1) 65%, rgba(148,226,213,1) 77%, rgba(137,220,235,1) 82%, rgba(116,199,236,1) 88%, rgba(137,180,250,1) 95%); 
+    color: #fff;
+    animation: gradient 7s linear infinite;
+    font-weight:  bolder;
+    margin-left: 15px;
+    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
 }
 
 #workspaces button label {
     color: 	#89b4fa ;
     font-weight: bolder;
+    font-size: 13px;
 }
 
 #workspaces button.active label {
     color: #11111b;
     font-weight: bolder;
+    padding-left: 1px;
 }
 
 #workspaces {
@@ -39,28 +72,134 @@ window#waybar {
 }
 #workspaces button {
     box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
-    background-color: #11111b ;
+    background-color: #fff ;
     border-radius: 15px;
     margin-right: 10px;
-    padding: 10px;
     padding-top: 4px;
     padding-bottom: 2px;
+    padding-right: 7px;
     font-weight: bolder;
-    color: 	#89b4fa ;
+    color: 	#cba6f7 ;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
 }
 
 #workspaces button.active {
     padding-right: 20px;
     box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
     padding-left: 20px;
     padding-bottom: 3px;
-    background: rgb(203,166,247);
-    background: radial-gradient(circle, rgba(203,166,247,1) 0%, rgba(193,168,247,1) 12%, rgba(249,226,175,1) 19%, rgba(189,169,247,1) 20%, rgba(182,171,247,1) 24%, rgba(198,255,194,1) 36%, rgba(177,172,247,1) 37%, rgba(170,173,248,1) 48%, rgba(255,255,255,1) 52%, rgba(166,174,248,1) 52%, rgba(160,175,248,1) 59%, rgba(148,226,213,1) 66%, rgba(155,176,248,1) 67%, rgba(152,177,248,1) 68%, rgba(205,214,244,1) 77%, rgba(148,178,249,1) 78%, rgba(144,179,250,1) 82%, rgba(180,190,254,1) 83%, rgba(141,179,250,1) 90%, rgba(137,180,250,1) 100%); 
-    background-size: 400% 400%;
-    animation: gradient_f 20s ease-in-out infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    background: rgb(202,158,230);
+    background: linear-gradient(45deg, rgba(202,158,230,1) 0%, rgba(245,194,231,1) 43%, rgba(180,190,254,1) 80%, rgba(137,180,250,1) 100%); 
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
+    color: #fff;
 }
+
+#network {
+    padding-left: 15px;
+    padding-right: 17px;
+}
+
+#network.disabled{
+    background-color: #45475a;
+}
+
+#network.disconnected{
+    background: rgb(243,139,168);
+    background: linear-gradient(45deg, rgba(243,139,168,1) 0%, rgba(250,179,135,1) 100%); 
+    color: #fff;
+}
+
+#network.linked, #network.wifi{
+    background-color: #a6e3a1 ;
+}
+
+#network.ethernet{
+    background-color:#f9e2af ;
+}
+
+#pulseaudio {
+    background-color:  	#fab387;
+    color: #bf7d54;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 3px;
+}
+
+
+#temperature {
+    background: #f9e2af;
+    animation: gradient 20s ease infinite;
+    color:#96804e;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+
+#temperature.critical {
+    background-color: #f38ba8 ;
+    color:#bf5673;
+}
+
+#cpu {
+    background: rgb(180,190,254);
+    background: linear-gradient(52deg, rgba(180,190,254,1) 0%, rgba(137,220,235,1) 32%, rgba(137,180,250,1) 72%, rgba(166,227,161,1) 100%); 
+    animation: gradient 20s ease infinite;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    color: 	#fff;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+#memory {
+    background-color: #cba6f7;
+    color: 	#9a75c7;
+    font-size: 15px;
+    padding-top: 2px;
+}
+
+#battery {
+    background-color: #fff;
+    color:#a6e3a1;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 28px;
+}
+
+#battery.critical:not(.charging) {
+    background-color:  #f38ba8;
+    color:#bf5673;
+}
+
+#battery.warning:not(.charging) {
+    background-color:  #f38ba8;
+    color:#bf5673;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+    background: rgb(245,194,231);
+    background: linear-gradient(45deg, rgba(245,194,231,1) 0%, rgba(203,166,247,1) 64%, rgba(202,158,230,1) 100%); 
+    margin-right: 25px;
+    color: #fff;
+    background-size: 300% 300%;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+    animation: gradient 20s ease infinite;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+
 
 
 
