@@ -5,29 +5,31 @@ background_dir="/home/atenea/Pictures/background"
 background_list=$(ls $background_dir)
 last=$(echo $background_list | awk '{print $NF}')
 first=$(echo $background_list | awk '{print $1}')
+new_bg=
+found=0
 
-found=false
-for it in $background_list; do 
-: << COMMENT
+function applyBg() {
+    new_bg=$background_dir
+    new_bg+="/"
+    new_bg+=$1
+    swww img $new_bg --transition-type grow --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
+}
+
+
+if [ $curr_background == $last ]; then
+    applyBg $first
+    exit 0
+fi
+
+for it in $background_list; do
     if [ $it == $curr_background ]; then
-        $found = true
-        #echo $it
-        continue;
+        found=1
+        continue
     fi
-    if [ $found ]; then
-        new_bg=$background_dir
-        new_bg+="/"
-        new_bg+=$it
-        swww img $new_bg --transition-type grow --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
-        break;
+    if [ $found == 1 ]; then
+        applyBg $it
+        break
     fi
-    if [ $it == $last ]; then
-        swww img $first --transition-type grow --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
-        break;
-    fi
-COMMENT
-    echo $it
-    
 done
 
 exit 0

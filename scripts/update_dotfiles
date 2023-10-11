@@ -9,7 +9,7 @@ sleep 0.2
 ps aux | pgrep github-desktop 2>&1 1> /dev/null
 if ! [ $? -eq 0 ]; then
     echo "[+] Openning github-desktop"
-    exec github-desktop 2> /dev/null 1> /dev/null & disown
+    exec github-desktop &> /dev/null & disown
     sleep 1.75
 fi
 echo "[+] Program terminated!"

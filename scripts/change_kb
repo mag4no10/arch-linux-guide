@@ -16,20 +16,23 @@ function wrongParam() {
 }
 
 function changeMode() {
-    asusctl led-mode $1
+    asusctl led-mode $1 
 }
 
 function changeKeymap() {
     keymap=$(cat ~/.config/hypr/hyprland.conf | grep "kb_layout =.*" | awk '{print $NF}')
+    line=$(cat ~/.config/hypr/hyprland.conf | grep -n "kb_layout =.*" | awk '{print $1}' FS=":")
     if [ $keymap == "us" ]; then
         sudo localectl set-keymap --no-convert es
-        sed -i '20s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
-    elif [ $keymap == "es" ]; then
+        #sed -i "${line}s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf"
+        sed -i '21s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
+    elif [ $keymap == "es" ]; then 
         sudo localectl set-keymap --no-convert us
-        sed -i '20s/.*/    kb_layout = us/' ~/.config/hypr/hyprland.conf
+        sed -i '21s/.*/    kb_layout = us/' ~/.config/hypr/hyprland.conf
+        #sed -e "${$line}s/.*/    kb_layout = us/' ~/.config/hypr/hyprland.conf"
     else
         sudo localectl set-keymap --no-convert es
-        sed -i '20s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
+        sed -i '21s/.*/    kb_layout = es/' ~/.config/hypr/hyprland.conf
     fi
 }
 

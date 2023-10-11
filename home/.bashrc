@@ -13,7 +13,7 @@ PS1='[\u@\h \W]\$ '
 
 export LC_ALL=en_US.UTF-8
 export HYPRSHOT_DIR="~/Pictures"
-export EDITOR="neovim"
+export EDITOR="lunarvim"
 export TERMINAL='kitty'
 export BROWSER='google-chrome-stable'
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin:/var/lib/snapd/snap/bin:/home/atenea/Scripts:/home/atenea/.local/bin"

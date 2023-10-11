@@ -6,4 +6,5 @@ echo -n """
 	start_waybar:		Kill previous bar and runs another one
 	update_dotfiles: 	Update system dotfiles and opens github-desktop
 	utils:				Various utilities
+	change_bg:			Changes the background in ~/Pictures/background directory
 """
