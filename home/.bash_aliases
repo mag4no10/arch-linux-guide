@@ -3,10 +3,11 @@
 #
 
 
-alias ls='lsd --group-directories-first'
+alias ls="lsd --group-directories-first"
 alias ll="ls -l"
 alias la="ls -a"
 alias lla="ls -l -a"
+alias lst="ls -a --tree"
 
 alias clear="tput reset"
 

@@ -16,7 +16,7 @@
         "on-click": "/home/atenea/Scripts/change_bg",
         // "interval": 1,
         //"on-click": "~/.config/hypr/scripts/tools/expand cycle"
-        "tooltip": "false"
+        "tooltip": false
     },
 
     "custom/screenshot": {
@@ -57,10 +57,10 @@
     },
 
     "pulseaudio": {
-        "format": "{volume} ",
+        "format": "{volume}% ",
         "format-bluetooth": "{volume}% ",
-        "format-bluetooth-muted": "{volume}% ",
-        "format-muted": "{volume} ",
+        "format-bluetooth-muted": "0% ",
+        "format-muted": "0% ",
         "on-click-right": "pavucontrol",
         "on-click": "amixer -D pulse set Master 1+ toggle"
     },
