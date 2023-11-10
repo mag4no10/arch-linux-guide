@@ -63,7 +63,7 @@ disabled = true
 
 # Setting Icons for git status
 #[git_status]
-# style = "bold white"
+#style = "bold white"
 #conflicted = "🏳"
 #ahead = "🏎💨"
 #behind = "😰"
@@ -174,10 +174,10 @@ symbol = " "
 disabled = true
 symbol = " "
 
-#[git_branch]
-#symbol = " "
-# format = "[$symbol$branch(:$remote_branch)]($style) "
-#style = "bold italic red"
+[git_branch]
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold italic red"
 #format = "[git:](bold blue)[\\(](bold blue)[$branch(:$remote_branch)]($style)[\\)](bold blue) "
 
 [golang]
@@ -212,7 +212,7 @@ disabled = true
 symbol = " "
 
 [nodejs]
-disabled = true
+disabled = false
 symbol = " "
 
 #[package]

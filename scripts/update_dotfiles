@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cp -r ~/.config/{hypr,kitty,starship.toml,waybar,lvim,grub_themes,sddm_themes} ~/Github/arch-linux-guide/config/
-cp ~/.bashrc ~/.bash_aliases ~/.bash_pfetch ~/Github/arch-linux-guide/home/
+cp ~/.bashrc ~/.bash_aliases ~/.bash_vars ~/Github/arch-linux-guide/home/
 cp ~/Scripts/* ~/Github/arch-linux-guide/scripts
 sleep 0.2
 echo "[+] Files copied succesfully"
