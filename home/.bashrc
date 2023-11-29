@@ -18,7 +18,7 @@ if [ -f ~/.bash_logout ]; then
 fi
 
 eval "$(starship init bash)"
-eval "$(fnm env --multi &> /dev/null)"
+eval "$(fnm env --use-on-cd --shell bash)"
 
 echo -e "\n"
 pfetch

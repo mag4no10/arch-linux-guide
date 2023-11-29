@@ -51,6 +51,15 @@ window#waybar {
     box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
 }
 
+#custom-screenshot {
+    background: rgb(245,194,231);
+    color: #fff;
+    font-weight:  bolder;
+    margin-left: 15px;
+    padding-right: 1px;
+    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+}
+
 #workspaces button label {
     color: 	#89b4fa ;
     font-weight: bolder;

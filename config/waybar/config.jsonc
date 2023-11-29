@@ -2,11 +2,8 @@
     "layer": "top",
     "position": "top",
     "height": "16",
-    "margin-top": 0,
-    "margin-bottom": 0,
-    "margin-left": 0,
-    "margin-right": 0,
-    "modules-left":["custom/change_bg", "custom/screenshot"],
+    "margin": 0,
+    "modules-left":["custom/change_bg"],//, "custom/screenshot"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right":["backlight","network","pulseaudio","temperature","cpu","memory","battery","clock"],
     
@@ -14,20 +11,17 @@
         "format":"{}",
         "exec": "echo \"            \"",
         "on-click": "/home/atenea/Scripts/change_bg",
-        // "interval": 1,
-        //"on-click": "~/.config/hypr/scripts/tools/expand cycle"
         "tooltip": false
     },
 
     "custom/screenshot": {
         "format": "{}",
-        "on-click-left": "",
-        "on-click-right": "",
-        "tooltip": "false"
+        "exec": "echo \"            \"",
+        //"on-click": "/home/atenea/Scripts/take_sc -s -m output --clipboard-only",
+        "tooltip": false
     },
 
 
-    
     "hyprland/workspaces": {
         "format": "{name}",
         "format-active": " {name} ",
