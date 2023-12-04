@@ -213,28 +213,6 @@ We are halfway done. Let's install the base linux packages with pacstrap
 ```
 # pacstrap /mnt base base-devel linux linux-firmware vim iwd dhcpcd
 ```
-This will install ONLY ESSENTIAL PACKAGES. Once all is finished, you must install other apps in order to make a functional system. Here are a few examples:
-* userspace utilities for the management of file systems that will be used on the system:
-  - unrar
-  - unzip
-  - android-udev
-  - ntfs-3g 
-* utilities for accessing RAID or LVM partitions:
-  - lvm2
-* specific firmware for other devices not included in `linux-firmware`:
-* software necessary for networking:
-  - dhcpcd
-  - iwd
-  - inetutils
-  - iputils
-* text editor:
-  - nano
-  - vi
-  - vim
-  - neovim
-* packages for accessing documentation in man and info pages:
-  - man-db
-  - man-pages
 <br> 
 Dont forget to install this later !!!
 
