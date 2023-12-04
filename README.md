@@ -15,13 +15,14 @@ The default console keymap is US. Available layouts can be listed with:
 ```
 # ls /usr/share/kbd/keymaps/**/*.map.gz
 ```
-This is changeable using two methods: (better temporary for the moment) \
+This is changeable using two methods: \
+(Better using temporary atm) \
 \
 Temporary:
 ```
 # loadkeys es
 ```
-Persistent:
+Persistent: 
 ```
 # localectl set-keymap --no-convert es
 ```
@@ -116,13 +117,17 @@ We need at least 2 partitions:
 
 Swap partition is optional, but it's advisable to create it aswell
 Other partitions like /var /opt or /home can be create separately. \
-If you are installing arch in a vm, I simply recommend installing a root(/) and a home(/home) partition.
+If you are installing arch in a vm, I simply recommend installing a root(/) and a home(/home) partition. \
+This is the disk scheme I will be installing: (Total: 326.6gb)
 
-| Mount point | Partition                 |  Partition Type       | Suggested size          | 
-|-------------|---------------------------|-----------------------|-------------------------| 
-| /mnt/boot   | /dev/efi_system_partition | EFI system partition  | At least 300 MiB        | 
-| [SWAP]      | /dev/swap_partition       | Linux swap            | More than 512 MiB       | 
-| /mnt        | /dev/root_partition       | Linux x86-64 root (/) | Remainder of the device | 
+| Mount point | Partition                 |  Partition Type                | Suggested size          | 
+|-------------|---------------------------|--------------------------------|-------------------------| 
+| /mnt/boot   | /dev/efi_system_partition | EFI system partition           | At least 300 MiB        | 
+| [SWAP]      | /dev/swap_partition       | Linux swap                     | More than 512 MiB       | 
+| /mnt        | /dev/root_partition       | Linux x86-64 ext4 root (/)     | At least 20 GiB         |
+| /mnt/home   | /dev/home_partition       | Linux x86-64 ext4 home (/home) | Remainder of the device |
+
+My scheme will be EFI: 1 GiB, swap: 8Gib, /: 80GiB, /home: 237.6
 
 Let's use sda as our disk.
 *DISCLAIMER* IF YOU HAVE ALREADY AN EXISTING OPERATING SYSTEM AND YOU ARE PLANNING TO DUAL-BOOT, DO NOT CLEAN THE MAIN DRIVE. \
@@ -230,6 +235,7 @@ This will install ONLY ESSENTIAL PACKAGES. Once all is finished, you must instal
 * packages for accessing documentation in man and info pages:
   - man-db
   - man-pages
+<br> 
 Dont forget to install this later !!!
 
 ## Fstab
@@ -310,11 +316,7 @@ Set the root password
 Enable multilib and AUR repositories in `/etc/pacman.conf`. Open it with your editor of choice
 ### Adding multilib repository
 Uncomment `multilib` (remove # from the beginning of the lines)
-### Add the following lines at the end of your `/etc/pacman.conf` to enable the AUR repo
-```
-[archlinuxfr]
-Server = http://repo.archlinux.fr/$arch
-```
+
 ### `pacman` easter eggs
 You can enable the "easter-eggs" in `pacman`, the package manager of archlinux.\
 Open `/etc/pacman.conf`, then find `# Misc options`. \
@@ -323,6 +325,7 @@ To add colors to `pacman`, uncomment `Color`. Then add `Pac-Man` to `pacman` by 
 Color
 ILoveCandy
 ```
+Also uncomment parallel downloads that speed up our pacman downloads
 ### Update repositories and packages
 To check if you successfully added the repositories and enable the easter-eggs, execute:
 ```
