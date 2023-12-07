@@ -22,8 +22,12 @@ And we check for our ip
 ```
 
 ## Installing packages
+First, we have to check for updates in our system
+```
+# sudo pacman -Syu
+```
 [This](https://wiki.archlinux.org/title/List_of_applications) is a list of packages that we can install in our system. Feel free to check them out and choose your preferences. \
-First I will be installing yay
+The first package I will be installing is yay, to be able to access the [AUR](https://aur.archlinux.org/)
 ```
 # pacman -S git
 # cd /opt
@@ -35,112 +39,73 @@ First I will be installing yay
 ```
 Now we can search for the rest of the desired packages
 
-* Network connections
-  - globalprotect-openconnect-git
-  - networkmanager 
-  - tor 
-  - curl
-  - wget
-  - gnu-netcat
-  - inetutils (ftp...)
-  - openssh
-  - qbittorrent
-* Browsers
-  - librewolf
-  - google-chrome
-  - w3m
-* General
-  - xclip
-  - discord
-  - neofetch
-  - libreoffice-fresh
-  - flameshot
-  - droidcam
-  - trashmanager
-  - tar
-  - zip
-  - rar
-  - gzip
-  - fbxkb
-  - duc
-  - czkawka-cli
-  - virtualbox
-  - tree
-  - asciidoctor
-  - texlive-core
-  - masterpdfeditor-free
-  - basket
-* Multimedia
-  - vlc
-  - feh
-  - gimp
-  - cmus
-  - lollypop
-  - spotify
-  - audacity
-  - ffmpeg
-  - ffmpegyag
-* Volume control
-  - alsa-utils
-  - pavucontrol
-* Terminal emulator
-  - alacritty
-  - kitty
-  - xterm
-* Command line shell
-  - fish
-* Terminal pagers
-  - less
-  - more
-* Text editor
-  - vim
-  - gedit
-  - nvim
-  - code
-* file managers
-  - ranger
-  - thunar
-* Development
-  - make
-  - cmake
-  - meson
-  - gcc
-  - r
-  - python
-* Fonts
-  - Hack nerd font
-  - Fira code
-* System
-  - corestats
-  - btop
-  - hwinfo
-* Bluetooth
-  - bluez-utils
-  - bluez
-  - blueman
-* Display Server and Protocol
+### Network connections
+
+```
+# yay -S networkmanager tor curl wget inetutils openssh qbittorrent openconnect openvpn
+```
+### Browsers
+```
+# yay -S librewolf-bin google-chrome w3m
+```
+### General Purpose
+```
+# yay -S xclip discord_arch_electron libreoffice-fresh tar zip rar gzip virtualbox tree asciidoctor 
+```
+### Multimedia
+```
+# yay -S vlc feh gimp ffmpeg ffmpegyag alsa-utils blueman bluez pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-utils
+```
+### Terminal emulator
+```
+# yay -S kitty xterm fish
+```
+### Terminal pagers
+```
+# yay -S less
+```
+### Text editor
+```
+# yay -S vim nano neovim visual-studio-code-bin
+```
+### file managers
+```
+# yay -S ranger thunar
+```
+### Development
+```
+# yay -S make cmake meson gcc python
+```
+### Fonts
+```
+# yay -S ttf-hack-nerd ttf-firacode
+```
+### System
+```
+# yay -S corestats btop hwinfo
+```
+
+### Display Server and Protocol
   - x
   - wayland
-* Database
-  - adminer
-  - mycli
-  - sqlite
-* Security
-  - nmap
-  - tcpdump
-  - john
-  - hashcat
-  - (add blackarch repo)
-* Screenlockers
-  - betterlockscreen
-  - i3lock
+We will discuss this later !
 
-First, we have to check for updates in our system
+### Database
 ```
-# sudo pacman -Syu
+# yay -S sqlite mysql
 ```
 
-Create home subdirectories (Downloads,Pictures...)
+### Security
+```
+# yay -S nmap tcpdump john netcat hashcat wireshark-qt
+```
+
+### Screenlockers
+```
+# yay -S i3lock
+```
+
+## Create home subdirectories (Downloads,Pictures...)
 ```
 # yay -S xdg-user-dirs
 # xdg-user-dirs-update
@@ -227,8 +192,6 @@ TODO: \
     
   ufw \
   amd microcode and theme grub \
-  add parallel downloads to pacman.conf \
-  buscar que errores hay en el script de instalacion \
   issues with resolution, xrandr --listmonitors, xrandr --output <OUTPUT> --mode <RESOLUTION>, if problem, cvt \
   install batcat \
   aliases \
@@ -236,4 +199,3 @@ TODO: \
   grub-silent \
   reflector \
   lsd \
-  bluetooth -> yay -S bluez bluez-utils pulseaudio-bluetooth && reboot
