@@ -199,3 +199,4 @@ TODO: \
   grub-silent \
   reflector \
   lsd \
+  add blackarch \
