@@ -56,7 +56,7 @@ Now we can search for the rest of the desired packages
 ```
 # yay -S vlc feh gimp ffmpeg ffmpegyag alsa-utils blueman bluez pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-utils
 ```
-### Terminal emulator
+### Terminal emulator and shell
 ```
 # yay -S kitty xterm fish
 ```
