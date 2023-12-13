@@ -1,5 +1,5 @@
 # My own arch linux install guide pt2
-After rebooting, we will already got our functional system. So now we will be installing our packages. \
+After rebooting, we will already got our functional system. So now we will be installing our packages
 
 ## Connect to the Internet
 First we check if we have connection
@@ -124,7 +124,7 @@ In my case, these are the missing ones
 # yay -S ufw
 # sudo ufw enable
 ```
-I will be using ssh so:
+I will be using ssh, so:
 ```
 # sudo systemctl start sshd
 # sudo systemctl enable sshd
@@ -185,11 +185,16 @@ I will set everything (LC_ALL) to en_us, but you may check it out [here](https:/
 To make it persistent after boot, just add it in your bashrc. (It is already added in my dotfiles) 
 
 ## Installing a compositor / window manager
-In this setup, I will install Wayland protocol + Hyprland. Beware that nvidia gpus got awful performance and compatibility with wayland \
+In this setup, I will install Wayland protocol + Hyprland. Beware that nvidia gpus got awful performance and compatibility with wayland and virtual machines \
+are not supported by Hyprland. \
 I will split the process in various stages in order to make it clear
 
-### STAGE I (hyprland dependencies)
-<!--- qt5-wayland qt5ct qt6-wayland qt6ct qt5-svg qt5-quickcontrols2 qt5-graphicaleffects gtk3 polkit-gnome pipewire wireplumber jq wl-clipboard cliphist python-requests pacman-contrib -->
+### STAGE I (wlroots dependencies)
+```
+# yay -S meson wayland wayland-protocols libseat pixman udev libxkbcommon libinput gbm libdrm egl-wayland-git hwdata libdisplay-info libliftoff-git
+```
+
+### STAGE II (hyprland dependencies)
 ```
 # yay -S gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info cpio tomlplusplus
 ```
