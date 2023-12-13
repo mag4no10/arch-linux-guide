@@ -74,7 +74,7 @@ Now we can search for the rest of the desired packages
 ```
 ### Development
 ```
-# yay -S make cmake meson gcc python
+# yay -S make cmake meson gcc python fnm
 ```
 ### Fonts
 ```
