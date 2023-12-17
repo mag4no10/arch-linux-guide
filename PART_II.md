@@ -1,5 +1,5 @@
 # My own arch linux install guide pt2
-After rebooting, we will already got our functional system. So now we will be installing our packages. \
+After rebooting, we will already got our functional system. So now we will be installing our packages
 
 ## Connect to the Internet
 First we check if we have connection
@@ -56,7 +56,7 @@ Now we can search for the rest of the desired packages
 ```
 # yay -S vlc feh gimp ffmpeg ffmpegyag alsa-utils blueman bluez pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-utils
 ```
-### Terminal emulator
+### Terminal emulator and shell
 ```
 # yay -S kitty xterm fish
 ```
@@ -74,7 +74,7 @@ Now we can search for the rest of the desired packages
 ```
 ### Development
 ```
-# yay -S make cmake meson gcc python
+# yay -S make cmake meson gcc python fnm
 ```
 ### Fonts
 ```
@@ -119,21 +119,89 @@ In my case, these are the missing ones
 # yay -S ast-firmware wd719x-firmware aic94xx-firmware linux-firmware-qlogic upd72020x-fw
 ```
 
+## Installing a firewall
+```
+# yay -S ufw
+# sudo ufw enable
+```
+I will be using ssh, so:
+```
+# sudo systemctl start sshd
+# sudo systemctl enable sshd
+# sudo ufw allow ssh
+```
+
+## Updating our cpu microcode
+This is so important because it will increase our cpu memory security \
+Check which processor you got and install the respective patch (just one of them)
+```
+# yay -S amd-ucode
+# yay -S intel-ucode
+```
+
+## Some good-looking packages
+[Batcat](https://github.com/sharkdp/bat) is a cat with steroids, same happens with [lsd](https://github.com/lsd-rs/lsd) and ls \
+I choose [pfetch](https://github.com/Gobidev/pfetch-rs) over neofetch because it's prettier, it's written in rust and it's so lightweight
+```
+yay -S bat-cat-git pfetch-rs lsd
+```
+
+## Blackarch repo
+Following the [official installation](https://blackarch.org/downloads.html):
+```
+# cd ~/Downloads
+# curl -O https://blackarch.org/strap.sh
+```
+Check the hash and give execution premission
+```
+# echo 018253176eeea0a3f8e864a7e0a966c96629acef strap.sh | sha1sum -c
+# chmod u+x strap.sh
+```
+Finally, execute it and check if everything went fine
+```
+# sudo bash strap.sh
+# yay -Syu
+```
+
+## Updating mirrors
+Reflector is the package that will help us to check the fastests mirrors considering our location
+```
+# yay -S reflector
+```
+You can alias this command to use regularly
+```
+# sudo reflector --verbose --latest 5 --country 'Spain' --age 24 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+## Locales
+Execute locale command to check which ones are not set
+```
+# locale
+```
+I will set everything (LC_ALL) to en_us, but you may check it out [here](https://wiki.archlinux.org/title/locale)
+```
+# export LC_ALL="en_US.UTF-8"
+```
+To make it persistent after boot, just add it in your bashrc. (It is already added in my dotfiles) 
+
 ## Installing a compositor / window manager
-In this setup, I will install Wayland protocol + Hyprland. Beware that nvidia gpus got awful performance and compatibility with wayland, but thanks to [sol](https://github.com/SolDoesTech), it aparently has some support \
+In this setup, I will install Wayland protocol + Hyprland. Beware that nvidia gpus got awful performance and compatibility with wayland and virtual machines \
+are not supported by Hyprland. \
 I will split the process in various stages in order to make it clear
 
-### STAGE I (prework)
+### STAGE I (wlroots dependencies)
 ```
-# yay -S qt5-wayland qt5ct qt6-wayland qt6ct qt5-svg qt5-quickcontrols2 qt5-graphicaleffects gtk3 polkit-gnome pipewire wireplumber jq wl-clipboard cliphist python-requests pacman-contrib
+# yay -S meson wayland wayland-protocols libseat pixman udev libxkbcommon libinput gbm libdrm egl-wayland-git hwdata libdisplay-info libliftoff-git
 ```
-### STAGE II (personal preference packages)
+
+### STAGE II (hyprland dependencies)
 ```
-# yay -S globalprotect-openconnect-git networkmanager tor curl wget gnu-netcat inetutils openssh qbittorrent librewolf-bin google-chrome xclip discord pfetch libreoffice-fresh flameshot tar zip unzip rar unrar gzip fbxkb virtualbox tree asciidoctor texlive-core vlc feh gimp lollypop audacity ffmpeg ffmpegyag alsa-utils pavucontrol fish starship less more vim nvim gedit code ranger caja make cmake gcc meson r python ttf-hack-nerd ttf-firacode-nerd corestats btop hwinfo nmap tcpdump john hashcat   
+# yay -S gdb ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info cpio tomlplusplus
 ```
+
 ### STAGE III (main packages)
 ```
-# yay -S kitty mako waybar swww swaylock-effects wofi wlogout xdg-desktop-portal-hyprland swappy grim slurp mpv pamixer pavucontrol brightnessctl bluez bluez-utils blueman network-manager-applet gvfs thunar thunar-archive-plugin file-roller papirus-icon-theme noto-fonts-emoji lxappearance xfce4-settings nwg-look-bin sddm    
+# yay -S kitty mako waybar swww swaylock-effects wofi wlogout xdg-desktop-portal-hyprland swappy grim slurp mpv pamixer pavucontrol brightnessctl bluez bluez-utils blueman network-manager-applet gvfs thunar thunar-archive-plugin file-roller papirus-icon-theme noto-fonts-emoji lxappearance xfce4-settings nwg-look-bin sddm starship
 ```
 ### STAGE IV (nvidia gpus only)
 ```
@@ -179,23 +247,3 @@ Install rog packages and enabling its services
 # systemctl enable --now power-profiles-daemon.service
 # systemctl enable --now supergfxd
 ```
-
-
-
-TODO: \
-  AÑADIR EN HYTPRLAND.CONF \
-    KEYMAP \
-    NVIDIA | NONVNDIA ENV \
-    monitor=DP-1,1920x1080@144,0x0,1 \
-    https://github.com/SolDoesTech/HyprV4/blob/main/HyprV/hypr/hyprland.conf
-    
-    
-  ufw \
-  amd microcode and theme grub \
-  issues with resolution, xrandr --listmonitors, xrandr --output <OUTPUT> --mode <RESOLUTION>, if problem, cvt \
-  install batcat \
-  aliases \
-  locales \
-  grub-silent \
-  reflector \
-  lsd \
