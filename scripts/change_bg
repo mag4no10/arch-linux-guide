@@ -12,7 +12,7 @@ function applyBg() {
     new_bg=$background_dir
     new_bg+="/"
     new_bg+=$1
-    swww img $new_bg --transition-type grow --transition-fps 144 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
+    swww img $new_bg --transition-duration 2 --transition-type grow --transition-fps 240 --transition-pos $(hyprctl cursorpos | awk '{print $1 $2}') --invert-y
 }
 
 

@@ -20,8 +20,6 @@ fi
 eval "$(starship init bash)"
 eval "$(fnm env --use-on-cd --shell bash)"
 
-echo -e "\n"
 pfetch
 
-# Default prompt
-#PS1='[\u@\h \W]\$ '
+
