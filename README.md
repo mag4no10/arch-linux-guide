@@ -39,7 +39,7 @@ First, try pinging in order to know if we are already connected to the Internet
 ```
 ping archlinux.org
 ```
-If we are connected, you may skip this step [*](https://github.com/mag4no10/arch-linux-guide#update-the-system-clock)
+If we are connected, you may skip this step
 
 Numerate all network interfaces
 ```
