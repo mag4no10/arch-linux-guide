@@ -181,7 +181,7 @@ Now the screen shows the list of partitions. Naturally, it must show free space 
 + Lastly, hit `Write` at the bottom of the patitions list to *write the changes* to the disk. Type `yes` to *confirm* the write command. Now we are done partitioning the disk. Hit `Quit` *to exit cgdisk*. Go to the [next section](#formatting-partitions).
 
 ## Format the partitions
-Once we got our partitions created, we must give them an appropiate type. For swap it is swap type, for efi it is fat32 but in the other hand, root and home are kinda debatable. People usually use EXT4, but there are other benefits about using btrfs or xfs. We will be using the old EXT4, but it is up to you. \
+Once we got our partitions created, we must give them an appropiate type. For swap it is swap type, for efi it is fat32 but in the other hand, root and home are kinda debatable. People usually use EXT4, but there are other benefits about using btrfs or xfs. We will be using the old EXT4, but it is up to you.
 (In my case, sda1 is efi, sda2 is swap, sda3 is root and sda4 is home, but is may not be in yours. Check it out!)
 ```
 # mkfs.ext4 /dev/sda3
@@ -197,15 +197,15 @@ Mount the root volume to /mnt
 ```
 Create a boot mount point and assign it to efi partition
 ```
-mount --mkdir /dev/sda1 /mnt/efi
+# mount --mkdir /dev/sda1 /mnt/efi
 ```
 Now create a home mount point and assign it to home partition
 ```
-mount --mkdir /dev/sda4 /mnt/home
+# mount --mkdir /dev/sda4 /mnt/home
 ```
 Finally enable swap volume with swapon
 ```
-swapon /dev/sda2
+# swapon /dev/sda2
 ```
 
 ## Installation
