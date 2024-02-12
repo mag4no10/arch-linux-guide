@@ -271,10 +271,9 @@ Now open `/etc/hosts` to add matching entries to `hosts`
 ::1          localhost  
 127.0.1.1    MYHOSTNAME.localdomain	  MYHOSTNAME
 ```
-If the system has a permanent IP address, it should be used instead of `127.0.1.1`.
 Download this packages that will help ur later. 
 ```
-# pacman -S netctl wpa_supplicant ifplugd
+# pacman -S netctl
 ```
 
 ## Initramfs
@@ -314,11 +313,10 @@ If updating returns an error, open the `pacman.conf` again and check for human e
 ## Add a user account and a user group
 Add a new user account. In this guide, I'll just use `MYUSERNAME` as the username of the new user aside from `root` account.
 ```
-# groupadd MYUSERNAME
-# useradd -m -g users -G wheel,storage,power,video,audio,rfkill,input,MYUSERNAME -s /bin/bash MYUSERNAME
+# useradd -m -U -G wheel,storage,power,video,audio,rfkill,input -s /bin/bash MYUSERNAME
 ```
 This will create a new user and its `home` folder. \
-Set the password of user `MYUSERNAME`:  
+Set the password of user `MYUSERNAME`:
 ```
 # passwd MYUSERNAME
 ```
@@ -369,7 +367,7 @@ If you dual-boot with other operating systems, you may consider installing os-pr
 ```
 Then install grub on the EFI directory as shown
 ```
-# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 ```
 Now run this command to show boot entries but Arch
 ```
