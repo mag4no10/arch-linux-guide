@@ -158,7 +158,7 @@ Now the screen shows the list of partitions. Naturally, it must show free space 
 
 	- Hit New again from the options at the bottom of partition list.
 	- Just hit enter to select the default option for the first sector.
-	- For the swap partition size, I always assign mine with 1GiB. Hit enter.
+	- For the swap partition size, follow the gold rule: x1.5 your RAM. Hit enter.
 	- Set GUID to `8200`. Hit enter.
 	- Set name to `swap`. Hit enter.
 
