@@ -15,17 +15,9 @@ The default console keymap is US. Available layouts can be listed with:
 ```
 # ls /usr/share/kbd/keymaps/**/*.map.gz
 ```
-This is changeable using two methods: \
-(Better using temporary atm) \
-\
-Temporary:
+This is changeable using loadkeys:
 ```
 # loadkeys es
-```
-Persistent: 
-```
-# localectl set-keymap --no-convert es
-```
 
 ## Verify the boot mode
 To verify the boot mode, list the efivars directory:
