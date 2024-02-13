@@ -18,7 +18,7 @@ The default console keymap is US. Available layouts can be listed with:
 This is changeable using loadkeys:
 ```
 # loadkeys es
-
+```
 ## Verify the boot mode
 To verify the boot mode, list the efivars directory:
 ```
