@@ -32,8 +32,7 @@ The first package I will be installing is yay, to be able to access the [AUR](ht
 # pacman -S git
 # cd /opt
 # git clone https://aur.archlinux.org/yay-git.git
-# sudo "your user"
-# chown -R "your user" yay-git
+# sudo chown -R "your user" yay-git
 # cd yay-git
 # makepkg -si
 ```
@@ -143,7 +142,8 @@ Check which processor you got and install the respective patch (just one of them
 [Batcat](https://github.com/sharkdp/bat) is a cat with steroids, same happens with [lsd](https://github.com/lsd-rs/lsd) and ls \
 I choose [pfetch](https://github.com/Gobidev/pfetch-rs) over neofetch because it's prettier, it's written in rust and it's so lightweight
 ```
-yay -S bat-cat-git pfetch-rs lsd
+# pacman -S bat
+# yay -S pfetch-rs lsd
 ```
 
 ## Blackarch repo
