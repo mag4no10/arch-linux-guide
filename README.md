@@ -245,7 +245,7 @@ Generate the locales by running:
 ```
 Next, create a new locale configuration file and save the locale as shown.
 ```
-# echo "LANG=EN_US.UTF-8" > /etc/locale.conf
+# echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
 
 ## Network Configuration
@@ -331,8 +331,8 @@ You can install `systemd-boot` or `grub`, here's the installation of both:
 Create a boot entry `/boot/loader/entries/arch.conf`, then add these lines:
 ```
 title Arch Linux  
-linux /vmlinuz-linux  
-initrd  /initramfs-linux.img  
+linux /boot/vmlinuz-linux  
+initrd  /boot/initramfs-linux.img  
 options root=/dev/sda3 rw
 ```
 If your `/` is not in `/dev/sda3`, make sure to change it. \
