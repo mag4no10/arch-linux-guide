@@ -138,7 +138,7 @@ Now the screen shows the list of partitions. Naturally, it must show free space 
 **To select all available space, just simply leave sector space blank**
 
 + Create the `boot` partition
-	- If you already have a efi partition that is being used by windows or other os, do not create another one. Just mount the existing one to /mnt/efi
+	- If you already have a efi partition that is being used by windows or other os, do not create another one. Just mount the existing one to /mnt/boot
 	- Hit New from the options at the bottom.
 	- Just hit enter to select the default option for the first sector.
 	- Now the partion size - Arch wiki recommends 200-300 MB for the boot + size. Let’s make 1GiB in case we need to add more OS to our machine. I’m gonna assign mine with 1024MiB. Hit enter.
