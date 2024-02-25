@@ -1,51 +1,57 @@
-#indicator
-# no-unlock-indicator
-# daemonize
-#indicator-caps-lock
-# datestr=%A
-#image=/home/atenea/Pictures/background/pink_sky.png
-#scaling=fill
-# color=00000000
-#screenshots
-#clock
-#effect-blur=7x5
-#effect-vignette=0.5:0.5:0.5:0.5:0
-#font=UbuntuMono
-#font-size=20
+#
+#     /$$$$$$  /$$      /$$  /$$$$$$  /$$     /$$ /$$        /$$$$$$   /$$$$$$  /$$   /$$
+#    /$$__  $$| $$  /$ | $$ /$$__  $$|  $$   /$$/| $$       /$$__  $$ /$$__  $$| $$  /$$/
+#   | $$  \__/| $$ /$$$| $$| $$  \ $$ \  $$ /$$/ | $$      | $$  \ $$| $$  \__/| $$ /$$/ 
+#   |  $$$$$$ | $$/$$ $$ $$| $$$$$$$$  \  $$$$/  | $$      | $$  | $$| $$      | $$$$$/  
+#    \____  $$| $$$$_  $$$$| $$__  $$   \  $$/   | $$      | $$  | $$| $$      | $$  $$  
+#    /$$  \ $$| $$$/ \  $$$| $$  | $$    | $$    | $$      | $$  | $$| $$    $$| $$\  $$ 
+#   |  $$$$$$/| $$/   \  $$| $$  | $$    | $$    | $$$$$$$$|  $$$$$$/|  $$$$$$/| $$ \  $$
+#    \______/ |__/     \__/|__/  |__/    |__/    |________/ \______/  \______/ |__/  \__/
+#
 
 
 clock
-datestr=%d/%m/%Y
 indicator
-indicator-caps-lock
-no-unlock-indicator
+hide-keyboard-layout
+disable-caps-lock-text
+
+datestr=%d/%m/%Y
+
 scaling=fill
 image=/home/atenea/Pictures/background/pink_sky.png
-indicator-radius=100
-indicator-thickness=7
-effect-blur=7x5
-effect-vignette=0.5:0.5:0.5:0.5:0
-ring-color=#bb00cc
-key-hl-color=#880033
-line-color=#00000000
-inside-color=#00000088 
-separator-color=#00000000
-grace=1
+
+grace=0
 fade-in=0.2
 font=FiraCodeNerdFont
 
-# Ring
-#indicator-radius=150
-# line-uses-ring
-#line-color=#3b4252
-#text-color=#d8dee9
-# inside-color=#2e344098
-# inside-color=#24273a
-#inside-ver-color=#5e81ac
-#line-ver-color=#5e81ac
-#ring-ver-color=#5e81ac98
-#ring-color=#24273a
-#key-hl-color=#b7bdf8
-#separator-color=#4c566a
-#layout-text-color=#eceff4
-#line-wrong-color=#d08770
+indicator-radius=100
+indicator-thickness=7
+
+effect-blur=7x5
+effect-vignette=0.5:0.5:0.5:0.5:0
+
+ring-color=#ffffff
+ring-wrong-color=#ffffff
+ring-ver-color=#ffffff
+ring-clear-color=#ffffff
+
+key-hl-color=#ffffff
+
+line-color=#ffffff
+line-wrong-color=#ffffff
+line-ver-color=#ffffff
+line-clear-color=#ffffff
+
+inside-color=#fc8eac
+inside-ver-color=#fc8eac
+inside-wrong-color=#fc8eac
+inside-clear-color=#fc8eac
+
+separator-color=#00000000
+
+#layout-text-color=#ffffff
+
+text-color=#ffffff
+text-ver-color=#ffffff
+text-wrong-color=#ffffff
+text-clear-color=#ffffff

@@ -1,0 +1,41 @@
+[2024-02-23 17:33:03.036] [info] Using configuration file /home/atenea/.config/waybar/config.jsonc
+[2024-02-23 17:33:03.038] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-02-23 17:33:03.038] [info] Using CSS file /home/atenea/.config/waybar/style.css
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:51:38: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:51:40: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:51:42: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:60:38: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:60:40: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:60:42: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:83:38: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:83:40: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:83:42: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:97:38: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:97:40: Not using units is deprecated. Assuming 'px'.
+
+(waybar:1785): Gtk-WARNING **: 17:33:03.039: Theme parsing error: style.css:97:42: Not using units is deprecated. Assuming 'px'.
+[2024-02-23 17:33:03.050] [warning] Mapping is not an object
+[2024-02-23 17:33:03.051] [info] Hyprland IPC starting
+[2024-02-23 17:33:03.195] [info] Bar configured (width: 1920, height: 52) for output: eDP-1
+[2024-02-23 17:33:03.533] [warning] Requested height: 52 is less than the minimum height: 53 required by the modules
+[2024-02-23 17:33:03.533] [info] Bar configured (width: 1920, height: 53) for output: eDP-1
+[2024-02-23 17:33:07.755] [info] Bar configured (width: 1920, height: 52) for output: eDP-1
+[2024-02-23 17:33:07.762] [info] Bar configured (width: 1920, height: 51) for output: eDP-1
+[2024-02-23 17:33:07.928] [warning] Requested height: 51 is less than the minimum height: 52 required by the modules
+[2024-02-23 17:33:07.928] [info] Bar configured (width: 1920, height: 52) for output: eDP-1
+[2024-02-23 17:33:08.095] [warning] Requested height: 52 is less than the minimum height: 53 required by the modules
+[2024-02-23 17:33:08.095] [info] Bar configured (width: 1920, height: 53) for output: eDP-1
+[2024-02-23 17:33:15.129] [info] Bar configured (width: 1920, height: 52) for output: eDP-1
+[2024-02-23 17:33:15.303] [warning] Requested height: 52 is less than the minimum height: 53 required by the modules
+[2024-02-23 17:33:15.303] [info] Bar configured (width: 1920, height: 53) for output: eDP-1

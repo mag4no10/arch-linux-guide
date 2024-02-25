@@ -31,3 +31,5 @@ alias mirrors="sudo reflector --verbose --latest 5 --country 'Spain' --age 24 --
 alias ull_connect="sudo openconnect --protocol=gp --quiet --background vpn.ull.es"
 alias tryhackme_connect=""
 alias htb_connect=""
+
+alias discord="google-chrome-stable --app="http://discord.com/app" --class=WebApp-Discord3840 --user-data-dir=/home/atenea/.local/share/ice/profiles/Discord3840"
