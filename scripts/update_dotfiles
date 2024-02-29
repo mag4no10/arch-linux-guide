@@ -1,12 +1,12 @@
 #!/bin/bash
 
-cp -r ~/.config/{hypr,kitty,starship.toml,waybar,lvim,grub_themes,sddm_themes,wofi,swaylock} ~/Github/arch-linux-guide/config/
+cp -r ~/.config/{hypr,kitty,starship.toml,waybar,lvim,grub_themes,sddm_themes,wofi,swaylock,fish,dunst} ~/Github/arch-linux-guide/config/
 cp ~/.bashrc ~/.bash_aliases ~/.bash_vars ~/Github/arch-linux-guide/home/
 cp ~/Scripts/* ~/Github/arch-linux-guide/scripts
 sleep 0.2
 echo "[+] Files copied succesfully"
 sleep 0.2
-ps aux | pgrep github-desktop 2>&1 1> /dev/null
+ps aux | pgrep github-desktop &> /dev/null
 if ! [ $? -eq 0 ]; then
     echo "[+] Openning github-desktop"
     exec github-desktop &> /dev/null & disown
