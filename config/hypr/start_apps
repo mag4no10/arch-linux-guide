@@ -7,3 +7,4 @@ nohup /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nohup swww init &
 LC_ALL=en_US.UTF-8 nohup waybar -c $HOME/.config/waybar/config.jsonc -s $HOME/.config/waybar/style.css &
 nohup mako &
+nohup $HOME/Scripts/get_packages &

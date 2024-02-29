@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # https://github.com/ThatOneCalculator/NerdFetch
 
@@ -24,14 +24,16 @@ case $1 in
 		ri=""
 		pi=""
 		ui=""
-		ci="";;
+		ci=""
+		;;
 	"-c")
 		font=cozette
 		ki="♥"
 		ri=""
 		pi=""
 		ui=""
-		ci="";;
+		ci=""
+		;;
 	"-e")
 		font=emoji
 		osi="🐧"
@@ -39,7 +41,8 @@ case $1 in
 		ri="🐐"
 		pi="📦"
 		ui="☕"
-		ci="🎨";;
+		ci="🎨"
+		;;
 	"-v") echo "NerdFetch $version"; exit;;
 	"-h") echo "Flags:
 -c: Cozette font
@@ -173,55 +176,8 @@ esac
 
 ## PACKAGE MANAGER AND PACKAGES DETECTION
 
-MANAGER=$(which nix-env pkg flatpak yum zypper dnf rpm dpkg-query brew port pacman xbps-query emerge cave apk kiss pmm /usr/sbin/slackpkg bulge birb yay paru pacstall cpm pmm eopkg getprop 2>/dev/null)
-manager=$(basename "$MANAGER")
-if [ $distrotype = netbsd ]; then
-	manager="pkg_info-netbsd"
-fi
-case $manager in
-	cpm) packages="$(cpm C)";;
-	flatpak) packages="$(flatpak list --app | wc -l)";;
-	brew) packages="$(printf '%s\n' "$(brew --cellar)/"* | wc -l)";;
-	port) packages="$(port installed | wc -l)";;
-	dpkg-query) packages="$(dpkg-query -f '${binary:Package}\n' -W | wc -l)";;
-	rpm) packages="$(rpm -qa --last| wc -l)";;
-	yum) packages="$(yum list installed | wc -l)";;
-	dnf) packages="$(dnf list installed | wc -l)";;
-	zypper) packages="$(zypper se | wc -l)";;
-	pacman) packages="$(pacman -Q | wc -l)";;
-	yay) packages="$(yay -Q | wc -l)";;
-	paru) packages="$(paru -Q | wc -l)";;
-	pacstall) packages="$(pacstall -L | wc -l)";;
-	kiss) packages="$(kiss list | wc -l)";;
-	emerge) packages="$(qlist -I | wc -l)";;
-	pkg) packages="$(pkg info | wc -l | tr -d ' ')";;
-	cave) packages="$(cave show installed-slots | wc -l)";;
-	xbps-query) packages="$(xbps-query -l | wc -l)";;
-	nix-env) packages="$(nix-store -q --requisites /run/current-system/sw | wc -l)";;
-	apk) packages="$(apk list --installed | wc -l)";;
-	pmm) packages="$(/bedrock/libexec/pmm pacman pmm -Q 2>/dev/null | wc -l )";;
-	eopkg) packages="$(eopkg li | wc -l)";;
-	/usr/sbin/slackpkg) packages="$(ls /var/log/packages | wc -l)";;
-	bulge) packages="$(bulge list | wc -l)";;
-	birb) packages="$(birb --list-installed | wc -l)";;
-	pkg_info)
-		packages="$(pkg_info -A | wc -l)"
-		manager="pkg";;
-	pkg_info-netbsd)
-		packages="$(pkg_info -a | wc -l)"
-		manager="pkg";;
-	*)
-		if [ $distrotype = android ]; then
-			packages="$(dpkg-query -f '${binary:Package}\n' -W | wc -l)"
-			manager="dpkg"
-		else
-			packages="$(ls /usr/bin | wc -l)"
-			manager="bin"
-		fi;;
-esac
-
-packages="${packages#"${packages%%[![:space:]]*}"}"
-manager=$(echo $manager | sed "s/-query//; s/\/usr\/.*\///")
+manager=$(cat $HOME/.curr_packages | awk '{printf $1}')
+packages=$(cat $HOME/.curr_packages | awk '{printf $2}')
 
 ## UPTIME DETECTION
 
