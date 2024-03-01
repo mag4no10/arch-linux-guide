@@ -7,7 +7,7 @@ source $HOME/.config/fish/vars.fish
 
 if status is-interactive
     set fish_greeting
-    /home/atenea/Scripts/nerdfetch
+    nerdfetch
     starship init fish | source
     fnm env --use-on-cd | source
     #pfetch

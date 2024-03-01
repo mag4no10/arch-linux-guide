@@ -1,7 +1,8 @@
+
 if string match -q "OpenSSL*" (command openssl version)
     # This is real OpenSSL that has the list command.
     function __fish_openssl_subcommand_options --description "Print options for openssl subcommand"
-        set -l cmd (commandline -pxc)
+        set -l cmd (commandline -poc)
         openssl list -options $cmd[2] | string replace -r -- '^(\S*)\s*.*' '-$1'
     end
 

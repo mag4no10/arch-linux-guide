@@ -1,3 +1,4 @@
+
 __fish_complete_pgrep pkill
 __fish_make_completion_signals
 for i in $__kill_signals

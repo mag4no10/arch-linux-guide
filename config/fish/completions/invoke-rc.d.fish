@@ -1,9 +1,13 @@
 function __fish_print_debian_services --description 'Prints services installed'
-    path filter -fxZ /etc/init.d/* | path basename
+    for service in /etc/init.d/*
+        if test -x $service
+            basename $service
+        end
+    end
 end
 
 function __fish_invoke_rcd_has_service
-    set -l tokens (commandline -xpc)
+    set -l tokens (commandline -opc)
     if test (count $tokens) -eq 2
         return 0
     else

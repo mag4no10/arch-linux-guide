@@ -16,9 +16,10 @@ set -l runtime config_cache_reload \
     service_cache_reload \
     ha_status \
     "ha_remove_node=" \
-    ha_set_failover_delay
+    ha_set_failover_delay 
 
-set -l scope rwlock mutex processing
+set -l scope rwlock mutex processing 
+
 
 function __fish_string_in_command -a ch
     string match -rq $ch (commandline)
@@ -41,7 +42,7 @@ function __fish_prepend -a prefix
         "preprocessing manager" \
         "preprocessing worker" \
         "proxy poller" \
-        self-monitoring \
+        "self-monitoring" \
         "snmp trapper" \
         "task manager" \
         timer \
@@ -57,7 +58,7 @@ function __fish_prepend -a prefix
         set var $log_target
     else if string match -rq 'prof_(en|dis)able' $prefix
         set var $log_target 'ha manager'
-    else if string match -rq diaginfo $prefix
+    else if string match -rq 'diaginfo' $prefix
         set var historycache preprocessing alerting lld valuecache locks
     end
 
@@ -65,6 +66,7 @@ function __fish_prepend -a prefix
         echo $prefix="$i"
     end
 end
+
 
 function __fish_list_nodes
     zabbix_server -R ha_status | tail -n+4 | awk '{print "ha_remove_node="$3}'
@@ -76,6 +78,7 @@ complete -c zabbix_server -f -s f -l foreground -d "Run Zabbix server in foregro
 complete -c zabbix_server -f -s h -l help -d "Display this help message."
 complete -c zabbix_server -f -s V -l version -d "Display version number."
 complete -c zabbix_server -f -s R -l runtime-control -a "$runtime" -d "Perform administrative functions."
+
 
 # Log levels
 complete -c zabbix_server -r -f -s R -l runtime-control -n "__fish_string_in_command log_level_increase" -a "(__fish_prepend log_level_increase)"
@@ -90,3 +93,4 @@ complete -c zabbix_server -r -f -s R -l runtime-control -n "__fish_string_in_com
 
 # diaginfo
 complete -c zabbix_server -r -f -s R -l runtime-control -n "__fish_string_in_command diaginfo" -a "(__fish_prepend diaginfo)"
+

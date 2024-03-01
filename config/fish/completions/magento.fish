@@ -137,6 +137,7 @@ function __fish_print_magento_languages -d "Shows all existing magento languages
     echo cy_GB\t"Welsh (United Kingdom)"
 end
 
+
 function __fish_print_magento_source_theme_file_types -d "Shows all available source theme file types"
     echo less\t"Currently only LESS is supported"
 end
@@ -201,7 +202,7 @@ end
 #########################################################
 
 function __fish_magento_not_in_command -d "Checks that prompt is not inside of magento command"
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     for i in $cmd
         if contains -- $i (__fish_print_magento_commands_list)
             return 1
@@ -218,7 +219,7 @@ end
 # in the arguments, even though if more than a single command is specified,
 # p4 will complain.
 function __fish_magento_is_using_command -d "Checks if prompt is in a specific command"
-    if contains -- $argv[1] (commandline -xpc)
+    if contains -- $argv[1] (commandline -opc)
         return 0
     end
     return 1
@@ -245,6 +246,7 @@ function __fish_magento_parameter_missing -d "Checks if a parameter has been giv
 
     return 0
 end
+
 
 ##################
 # Global options #
@@ -605,6 +607,7 @@ __fish_magento_register_command_option setup:static-content:deploy -f -s a -l ar
 __fish_magento_register_command_option setup:static-content:deploy -f -l exclude-area -a "(__fish_print_magento_theme_areas)" -d 'Do not generate files for specified areas (default: "none")'
 __fish_magento_register_command_option setup:static-content:deploy -x -s j -l jobs -d "Enable parallel processing using specified number of jobs (default: 4)"
 __fish_magento_register_command_option setup:static-content:deploy -f -l symlink-locale -d "Create symlinks for files of locales which are passed for deployment but have no customizations"
+
 
 #
 # setup:store-config:set

@@ -1,21 +1,15 @@
 set -l commands flashall getvar oem flashing reboot update erase format devices flash get_staged help stage boot fetch
 
 function __fish_fastboot_list_partition_or_file
-    set -l tokens (commandline -xpc)
-    # if last 2 token is flash, then list file
-    if test (count $tokens) -gt 2
-        if test $tokens[-2] = flash
-            # complete files
-            __fish_complete_suffix .img
-            __fish_complete_suffix $tokens[-1]
-            return
-        end
+    if __fish_seen_subcommand_from (__fish_fastboot_list_partition){_a,_b,}
+        __fish_complete_path
+    else
+        __fish_fastboot_list_partition
     end
-    __fish_fastboot_list_partition
 end
 
 function __fish_fastboot_list_partition
-    set -l partitions boot bootloader cache cust dtbo metadata misc modem odm odm_dlkm oem product pvmfw radio recovery system system_ext userdata vbmeta vendor vendor_dlkm vmbeta_system
+    set -l partitions boot bootloader dtbo modem odm odm_dlkm oem product pvmfw radio recovery system vbmeta vendor vendor_dlkm cache userdata system_ext
     for i in $partitions
         echo $i
     end
@@ -26,7 +20,7 @@ complete -c fastboot -s v -l verbose -d 'Verbose output'
 complete -c fastboot -l version -d 'Display version'
 
 complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -s w -d 'Wipe userdata'
-complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -s s -x -a "(fastboot devices)" -d 'Specify a device'
+complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -s s -d 'Specify a device'
 complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -s S -d 'Break into sparse files no larger than SIZE'
 complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -l slot -d 'Use SLOT; \'all\' for both slots, \'other\' for non-current slot (default: current active slot)' -xa "all other a b"
 complete -n "not __fish_seen_subcommand_from $commands" -c fastboot -l set-active -d 'Sets the active slot before rebooting' -xa "a b"
@@ -48,7 +42,7 @@ complete -f -n "not __fish_seen_subcommand_from $commands" -c fastboot -a fetch 
 complete -f -n "not __fish_seen_subcommand_from $commands" -c fastboot -a boot -d 'Download and boot kernel from RAM'
 
 # flash
-complete -n '__fish_seen_subcommand_from flash' -c fastboot -f -k -a "(__fish_fastboot_list_partition_or_file)"
+complete -n '__fish_seen_subcommand_from flash' -c fastboot -f -a "(__fish_fastboot_list_partition_or_file)"
 complete -n '__fish_seen_subcommand_from flash' -c fastboot -l skip-secondary -d 'Don\'t flash secondary slots in flashall/update'
 complete -n '__fish_seen_subcommand_from flash' -c fastboot -l skip-reboot -d 'Don\'t reboot device after flashing'
 complete -n '__fish_seen_subcommand_from flash' -c fastboot -l disable-verity -d 'Sets disable-verity when flashing vbmeta'
@@ -66,7 +60,7 @@ complete -n '__fish_seen_subcommand_from devices' -c fastboot -f
 complete -n '__fish_seen_subcommand_from devices' -c fastboot -s l -d 'device paths'
 
 # format
-complete -n '__fish_seen_subcommand_from format' -c fastboot -f -a "(__fish_fastboot_list_partition)"
+complete -n '__fish_seen_subcommand_from format' -c fastboot -f -a "(__fish_fastboot_list_partition_or_file)"
 
 # erase
 complete -n '__fish_seen_subcommand_from erase' -c fastboot -f -a "(__fish_fastboot_list_partition)"
@@ -79,3 +73,4 @@ complete -n '__fish_seen_subcommand_from reboot' -c fastboot -xa 'bootloader fas
 
 # oem
 complete -n '__fish_seen_subcommand_from oem' -c fastboot -xa 'device-info lock unlock edl'
+

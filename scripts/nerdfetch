@@ -288,7 +288,7 @@ c2="${reset}${yellow}"          # third color
 
 
 
-cat <<EOF
+cat << EOF
 
 ${c0}      ___       ${nc}${USER}${red}@${reset}${hn}${host}${reset} 
 ${c0}     (${c1}.. ${c0}\      ${lc}${osi}  ${ic}${os}${reset}

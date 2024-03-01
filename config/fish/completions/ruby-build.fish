@@ -1,5 +1,5 @@
 function __fish_ruby-build_needs_command
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     if test (count $cmd) -eq 1
         return 0
     end

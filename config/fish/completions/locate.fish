@@ -1,3 +1,4 @@
+
 complete -c locate -s A -l all -d 'Match all non-option arguments'
 complete -c locate -s b -l basename -d 'Match against the base name of the file'
 complete -c locate -s c -l count -d 'Print only the number of matches found'

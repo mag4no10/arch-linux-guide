@@ -28,7 +28,7 @@ end
 # This accounts for things like `aws --debug s3 foo ... s3://...`
 function __s3_cmd_in
     set -l is_s3 0
-    set -l tokens (commandline -cx)
+    set -l tokens (commandline -co)
     for token in $tokens[2..-1]
         # Ignore switches everywhere
         if string match -qr -- "^--" $token

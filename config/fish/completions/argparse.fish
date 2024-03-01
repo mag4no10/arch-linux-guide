@@ -1,5 +1,5 @@
 function __fish_argparse_exclusive_args --description 'Helper function to list unused options'
-    set --local all_tokens (commandline --tokens-expanded)
+    set --local all_tokens (commandline --tokenize)
     set --erase all_tokens[1]
     set --local current_token (commandline --current-token)
 

@@ -6,42 +6,43 @@ function __fish_fossil
 end
 
 function __fish_fossil_needs_command
-    test (count (commandline -pxc)) -eq 1
+    test (count (commandline -poc)) -eq 1
 end
 
 function __fish_fossil_command
-    set -l cmd (commandline -pxc)
+    set -l cmd (commandline -poc)
     test (count $cmd) -gt 1
     and contains -- $cmd[2] $argv
 end
 
 function __fish_fossil_subcommand
-    set -l cmd (commandline -pxc)
+    set -l cmd (commandline -poc)
     test (count $cmd) -eq 2
     and test $argv[1] = $cmd[2]
 end
 
 function __fish_fossil_subsubcommand
-    set -l cmd (commandline -pxc)
+    set -l cmd (commandline -poc)
     test (count $cmd) -ge 3
     and test $argv[1] = $cmd[2]
     and test $argv[2] = $cmd[3]
 end
 
 function __fish_fossil_subsubcommand_only
-    set -l cmd (commandline -pxc)
+    set -l cmd (commandline -poc)
     test (count $cmd) -eq 3
     and test $argv[1] = $cmd[2]
     and test $argv[2] = $cmd[3]
 end
 
 function __fish_fossil_subsubsubcommand_only
-    set -l cmd (commandline -pxc)
+    set -l cmd (commandline -poc)
     test (count $cmd) -eq 4
     and test $argv[1] = $cmd[2]
     and test $argv[2] = $cmd[3]
     and test $argv[3] = $cmd[4]
 end
+
 
 # add
 complete -c fossil -n __fish_fossil_needs_command -a add -x -d 'Add files to checkout'
@@ -135,6 +136,7 @@ complete -c fossil -n '__fish_fossil_command co checkout' -l force -d 'Ignore ed
 complete -c fossil -n '__fish_fossil_command co checkout' -l force-missing -d 'Ignore missing content'
 complete -c fossil -n '__fish_fossil_command co checkout' -l keep -d 'Only update the manifest'
 complete -c fossil -n '__fish_fossil_command co checkout' -l latest -d 'Update to latest version'
+
 
 # clean
 complete -c fossil -n __fish_fossil_needs_command -a clean -d 'Delete all extra files'

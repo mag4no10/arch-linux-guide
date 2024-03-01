@@ -6,34 +6,35 @@ function __blender_echo_input_file_name
     # Find last argument ending in .blend (or .blend1, etc.)
     # This is because a Blender invocation can open multiple blend file
     # sequentially, so we need to find the last one up to this point.
-    set -l path (commandline -pxc |
+    set -l path (commandline -poc |
         string match -r '.*\\.blend[0-9]*$' |
         tail --lines=1)
-    echo $path
+    # Using eval to expand ~ and variables specified on the commandline.
+    eval echo $path
 end
 
 function __blender_list_scenes
     blender --background (__blender_echo_input_file_name) --python-expr 'import bpy
 for scene in bpy.data.scenes:
-    print(f"\t{scene.name}")' 2>/dev/null |
+    print(f"\t{scene.name}")' |
         string replace -r -f '^\t' ''
 end
 
 function __blender_list_texts
     blender --background (__blender_echo_input_file_name) --python-expr 'import bpy
 for text in bpy.data.texts:
-    print(f"\t{text.name}")' 2>/dev/null |
+    print(f"\t{text.name}")' |
         string replace -r -f '^\t' ''
 end
 
 function __blender_list_engines
-    blender --background --engine help 2>/dev/null | string replace -r -f '^\t' ''
+    blender --background --engine help | string replace -r -f '^\t' ''
 end
 
 function __blender_list_addons
     blender --background --python-expr 'import addon_utils
 for mod in addon_utils.modules():
-    print(f"\t{mod.__name__}")' 2>/dev/null |
+    print(f"\t{mod.__name__}")' |
         string replace -r -f '^\t' ''
 end
 
@@ -77,13 +78,13 @@ complete -c blender -n 'not __blender_player' -o x -l use-extension -a '0\tfalse
 # Animation Playback Options:
 complete -c blender -n 'not __blender_player' -o a -d 'Run as animation player'
 
-complete -c blender -n __blender_player -o p -x -d 'Specify position and size'
-complete -c blender -n __blender_player -o m -d 'Read from disk (do not buffer)'
-complete -c blender -n __blender_player -o f -x -d 'Specify FPS to start with'
-complete -c blender -n __blender_player -o j -x -d 'Specify frame step'
-complete -c blender -n __blender_player -o s -x -d 'Specify start frame'
-complete -c blender -n __blender_player -o e -x -d 'Specify end frame'
-complete -c blender -n __blender_player -o c -x -d 'Memory in MB for cache'
+complete -c blender -n '__blender_player' -o p -x -d 'Specify position and size'
+complete -c blender -n '__blender_player' -o m -d 'Read from disk (do not buffer)'
+complete -c blender -n '__blender_player' -o f -x -d 'Specify FPS to start with'
+complete -c blender -n '__blender_player' -o j -x -d 'Specify frame step'
+complete -c blender -n '__blender_player' -o s -x -d 'Specify start frame'
+complete -c blender -n '__blender_player' -o e -x -d 'Specify end frame'
+complete -c blender -n '__blender_player' -o c -x -d 'Memory in MB for cache'
 
 # Window Options:
 complete -c blender -n 'not __blender_player' -o w -l window-border -d 'Show window borders'

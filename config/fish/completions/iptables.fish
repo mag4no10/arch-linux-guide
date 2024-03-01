@@ -2,7 +2,7 @@ set -l __fish_iptables_tables filter nat mangle raw security
 
 function __fish_iptables_current_table
     set -l next_is_table 1
-    for token in (commandline -xc)
+    for token in (commandline -oc)
         switch $token
             case "--table=*"
                 echo (string split -m1 = -- $token)[2]
@@ -33,6 +33,7 @@ function __fish_iptables_user_chains
         echo $b
     end
 end
+
 
 function __fish_iptables_chains
     set -l table (__fish_iptables_current_table)
@@ -78,7 +79,7 @@ end
 function __fish_iptables_has_chain
     # Remove descriptions
     set -l chains (__fish_iptables_chains | string split -m1 "    " | while read -l a b; echo $a; end)
-    set -l cmdline (commandline -xp)
+    set -l cmdline (commandline -op)
     for c in $chains
         if contains -- $c $cmdline
             return 0

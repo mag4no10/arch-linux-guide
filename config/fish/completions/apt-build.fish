@@ -1,3 +1,4 @@
+
 #apt-build
 complete -c apt-build -l help -d "Display help and exit"
 complete -f -c apt-build -a update -d "Update list of packages"

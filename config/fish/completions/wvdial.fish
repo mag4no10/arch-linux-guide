@@ -4,7 +4,7 @@ function __fish_complete_wvdial_peers --description 'Complete wvdial peers' --ar
 
     # test if there is an alternative config file specified
     set -l store_next
-    for opt in (commandline -cpx)
+    for opt in (commandline -cpo)
         if set -q store_next[1]
             set store_next
             set cfgfiles $opt
@@ -15,13 +15,16 @@ function __fish_complete_wvdial_peers --description 'Complete wvdial peers' --ar
             case -C --config
                 set store_next true
             case '--config=*'
-                set cfgfiles (string replace '--config=' '' -- $opt)
+                set cfgfiles (echo $opt | string replace '--config=' '')
         end
     end
 
-    for file in (path filter -rf -- $cfgfiles)
-        string match -r '\[Dialer' <$file | string replace -r '\[Dialer (.+)\]' '$1'
-    end | path sort -u | string match -v Defaults
+    for file in $cfgfiles
+        if test -f $file
+            string match -r '\[Dialer' <$file | string replace -r '\[Dialer (.+)\]' '$1'
+        end
+    end | sort -u | string match -v Defaults
+
 
 end
 

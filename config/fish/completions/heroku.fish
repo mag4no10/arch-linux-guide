@@ -30,7 +30,7 @@ function __fish_list_heroku_releases
 end
 
 function __fish_heroku_needs_command
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     if test (count $cmd) -eq 1
         return 0
     end
@@ -38,7 +38,7 @@ function __fish_heroku_needs_command
 end
 
 function __fish_heroku_using_command
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     if test (count $cmd) -gt 1
         if test $argv[1] = $cmd[2]
             return 0
@@ -140,6 +140,7 @@ complete $heroku_looking -xa auth:login -d "log in with your heroku credentials"
 complete $heroku_looking -xa auth:logout -d "clear local authentication credentials"
 complete $heroku_looking -xa auth:token -d "display your api token"
 complete $heroku_looking -xa auth:whoami -d "display your heroku email address"
+
 
 # Config options and subcommands
 complete -c heroku -n '__fish_heroku_using_command config' -s s -l shell -d "output config vars in shell format"

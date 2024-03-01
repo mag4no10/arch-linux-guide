@@ -1,7 +1,7 @@
 # fish completion for arc
 
 function __fish_arc_needs_command
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     if not set -q cmd[2]
         return 0
     else

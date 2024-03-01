@@ -21,6 +21,7 @@ function __fish_diskutil_using_not_subcommand
     and __fish_seen_subcommand_from $argv
 end
 
+
 ############
 # Commands #
 ############

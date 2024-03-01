@@ -1,5 +1,5 @@
 function __fish_exif_target_file_tags
-    for target in (string match -v -- '-*' (commandline -px)[2..])
+    for target in (string match -v -- '-*' (commandline -po)[2..])
         string replace -f '*' '' (exif --list-tags "$target" 2> /dev/null)[2..] | string replace -r '(\s+-){4}' '' | string split -m1 ' ' | string trim
     end
 end
@@ -8,11 +8,11 @@ function __fish_exif_potential_targets
     set -l token (commandline -t)
     set -l matching_files (complete -C "__fish_command_without_completions $token")
     for file in $matching_files
-        if test -d "$file"
+        if eval "test -d \"$file\""
             echo $file
-        else if exif "$file" &>/dev/null
+        else if eval "exif \"$file\"" &>/dev/null
             echo $file
-        else if not test -e "$file"
+        else if not eval "test -e \"$file\""
             # Handle filenames containing $.
             if exif $file &>/dev/null
                 echo $file

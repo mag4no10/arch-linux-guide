@@ -4,6 +4,7 @@ set -l runtime userparameter_reload \
     log_level_decrease \
     log_level_decrease=
 
+
 function __fish_string_in_command -a ch
     string match -rq $ch (commandline)
 end
@@ -30,3 +31,4 @@ complete -c zabbix_agentd -f -s V -l version -d "Output version information and 
 # Log levels
 complete -c zabbix_agentd -r -f -s R -l runtime-control -n "__fish_string_in_command log_level_increase" -a "(__fish_prepend log_level_increase)"
 complete -c zabbix_agentd -r -f -s R -l runtime-control -n "__fish_string_in_command log_level_decrease" -a "(__fish_prepend log_level_decrease)"
+

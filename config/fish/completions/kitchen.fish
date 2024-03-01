@@ -1,18 +1,19 @@
 # Fish Shell command-line completions for Test Kitchen
 
 function __fish_kitchen_no_command -d 'Test if kitchen has yet to be given the main command'
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     test (count $cmd) -eq 1
 end
 
 function __fish_kitchen_using_command
-    set -l cmd (commandline -xpc)
+    set -l cmd (commandline -opc)
     set -q cmd[2]; and test "$argv[1]" = $cmd[2]
 end
 
 function __fish_kitchen_list
     command kitchen list --bare
 end
+
 
 # help commands
 complete -c kitchen -f -n __fish_kitchen_no_command -a help -d "Describe available commands or one specific command"

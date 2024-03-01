@@ -1,3 +1,4 @@
+
 complete -c commandline -s h -l help -d "Display help and exit"
 complete -c commandline -s a -l append -d "Add text to the end of the selected area"
 complete -c commandline -s i -l insert -d "Add text at cursor"
@@ -11,8 +12,7 @@ complete -c commandline -s b -l current-buffer -d "Select entire command line (d
 
 complete -c commandline -s c -l cut-at-cursor -d "Only return that part of the command line before the cursor"
 complete -c commandline -s f -l function -d "Inject readline functions to reader"
-complete -c commandline -s x -l tokens-expanded -d "Print a list of expanded tokens"
-complete -c commandline -l tokens-raw -d "Print a list of raw tokens"
+complete -c commandline -s o -l tokenize -d "Print each token on a separate line"
 
 complete -c commandline -s I -l input -d "Specify command to operate on"
 complete -c commandline -s C -l cursor -d "Set/get cursor position, not buffer contents"
@@ -23,5 +23,6 @@ complete -c commandline -s S -l search-mode -d "Return true if performing a hist
 complete -c commandline -s P -l paging-mode -d "Return true if showing pager content"
 complete -c commandline -l paging-full-mode -d "Return true if pager is showing all content"
 complete -c commandline -l is-valid -d "Return true if the command line is syntactically valid and complete"
+
 
 complete -c commandline -n '__fish_contains_opt -s f function' -a '(bind --function-names)' -d 'Function name' -x

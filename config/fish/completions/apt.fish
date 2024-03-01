@@ -1,6 +1,6 @@
 # Completions for the `apt` command
 
-# macOS has a /usr/bin/apt that is something else entirely:
+# macOS has a /usr/bin/apt that is something else entirely: 
 # (apt - Returns the path to a Java home directory from the current user's settings)
 if [ "$(uname -s)" = Darwin -a "$(command -s apt)" = /usr/bin/apt ]
     exit 1
@@ -14,7 +14,7 @@ set -l handle_file_pkg_subcmds install
 function __fish_apt_subcommand -V all_subcmds
     set -l subcommand $argv[1]
     set -e argv[1]
-    complete -f -c apt -n __fish_is_first_token -a $subcommand $argv
+    complete -f -c apt -n "not __fish_seen_subcommand_from $all_subcmds" -a $subcommand $argv
 end
 
 function __fish_apt_option
@@ -33,23 +33,11 @@ end
 
 complete -c apt -f
 
-# We use -k to keep PWD directories (from the .deb completion) after packages, so we need to sort the packages
-complete -k -c apt -n "__fish_seen_subcommand_from $handle_file_pkg_subcmds" -kxa '(__fish_complete_suffix .deb)'
-complete -k -c apt -n "__fish_seen_subcommand_from $pkg_subcmds" -kxa '(__fish_print_apt_packages | sort)'
-complete -c apt -n "__fish_seen_subcommand_from $installed_pkg_subcmds" -kxa '(__fish_print_apt_packages --installed | sort)'
+complete -k -c apt -n "__fish_seen_subcommand_from $pkg_subcmds" -a '(__fish_print_apt_packages | string match -re -- "(?:\\b|_)"(commandline -ct | string escape --style=regex) | head -n 250 | sort)'
+complete -c apt -n "__fish_seen_subcommand_from $installed_pkg_subcmds" -a '(__fish_print_apt_packages --installed | string match -re -- "(?:\\b|_)"(commandline -ct | string escape --style=regex) | head -n 250)'
+complete -k -c apt -n "__fish_seen_subcommand_from $handle_file_pkg_subcmds" -a '(__fish_complete_suffix .deb)'
 
-complete -c apt -n "__fish_seen_subcommand_from install" -l no-install-recommends -d 'Do not install recommended packages'
-complete -c apt -n "__fish_seen_subcommand_from install" -l no-install-suggests -d 'Do not install suggested packages'
-complete -c apt -n "__fish_seen_subcommand_from install" -s d -l download-only -d 'Download Only'
-complete -c apt -n "__fish_seen_subcommand_from install" -s f -l fix-broken -d 'Correct broken dependencies'
-complete -c apt -n "__fish_seen_subcommand_from install" -s m -l fix-missing -d 'Ignore missing packages'
-complete -c apt -n "__fish_seen_subcommand_from install" -l no-download -d 'Disable downloading packages'
-complete -c apt -n "__fish_seen_subcommand_from install" -s q -l quiet -d 'Quiet mode'
-complete -c apt -n "__fish_seen_subcommand_from install" -s s -l simulate -l just-print -l dry-run -l recon -l no-act -d 'Perform a simulation'
-complete -c apt -n "__fish_seen_subcommand_from install" -s y -l yes -l assume-yes -d 'Automatic yes to prompts'
-complete -c apt -n "__fish_seen_subcommand_from install" -l assume-no -d 'Automatic no to prompts'
-complete -c apt -n "__fish_seen_subcommand_from install" -l install-recommends -d 'Install recommended packages'
-complete -c apt -n "__fish_seen_subcommand_from install" -l install-suggests -d 'Install suggested packages'
+complete -c apt -n "__fish_seen_subcommand_from install" -l no-install-recommends
 # This advanced flag is the safest way to upgrade packages that otherwise would have been kept back
 complete -c apt -n "__fish_seen_subcommand_from upgrade" -l with-new-pkgs
 

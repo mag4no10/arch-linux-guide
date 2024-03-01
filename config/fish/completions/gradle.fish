@@ -66,6 +66,7 @@ complete --command gw --command gradle --command gradlew \
     --exclusive \
     --arguments "(__fish_gradle_get_task_completion)"
 
+
 ###############################
 # Configure Option Completion #
 ###############################

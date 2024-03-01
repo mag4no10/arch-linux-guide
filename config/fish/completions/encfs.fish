@@ -1,3 +1,4 @@
+
 complete -c encfs -s i -l idle -d "Unmount when idle for specified MINUTES"
 complete -c encfs -s f -d "Run in the foreground"
 complete -c encfs -s v -l verbose -d "Verbose messages when run foreground"
