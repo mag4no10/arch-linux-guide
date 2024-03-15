@@ -391,4 +391,5 @@ To enable the network daemons on your next reboot, you need to enable `dhcpcd.se
 Finally, `reboot`.
 
 ## Next steps
-Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/)
+Now we gotta install display server or protocol, a window manager and compositor (X11), besides all the packages that will convert our system in a rice linux, just like this [unixp*rn](https://www.reddit.com/r/unixporn/).
+You can now continue to the [Second Part](./PART_II.md)
