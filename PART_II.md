@@ -85,7 +85,7 @@ Now we can search for the rest of the desired packages
 ```
 
 ### Display Server and Protocol
-  - x
+  - x11/xorg
   - wayland
 We will discuss this later !
 
