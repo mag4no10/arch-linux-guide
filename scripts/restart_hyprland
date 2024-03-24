@@ -1,8 +1,0 @@
-#!/bin/bash
-
-pgrep Hyprland > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    killall Hyprland > /dev/null 2>&1
-fi
-
-Hyprland > /dev/null 2>&1 & disown
