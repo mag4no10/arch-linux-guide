@@ -215,15 +215,11 @@ Update config
 # echo -e "options nvidia-drm modeset=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
 ```
 ### STAGE V
-Non-nvidia users:
+Now, install hyprland
 ```
 # yay -S hyprland
 ```
-Nvidia users:
-```
-# yay -S hyprland-nvidia
-# echo -e "\nsource = ~/.config/hypr/env_var_nvidia.conf" >> ~/.config/hypr/hyprland.conf
-```
+If ur a nvidia card user, you may declare some environmental variables. [Check this!](https://github.com/mag4no10/HyprArch/blob/main/old/config/hypr/env_var_nvidia.conf)
 ### STAGE VI (asus rog users only)
 Add rog repository \
 First add key
