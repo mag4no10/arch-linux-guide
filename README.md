@@ -39,7 +39,7 @@ Numerate all network interfaces
 ```
 Normally, enp0sX is the wired interface and wlanX or wlp3sX are the wireless interfaces.
 Wired connections should be enabled just by plugging in the RJ45 cable.
-For wireless connections, iwctl command should be used. \
+For wireless connections, iwctl command should be used.
 (I will be using wlan0 for convenience, use your own interface name)
 
 First start the iwc daemon:
@@ -91,7 +91,6 @@ Then apply the changes
 ```
 # timedatectl set-timezone "Europe/Dublin"
 ```
-\
 To change Time and Date
 ```
 # timedatectl set-time '2023-01-28 19:42:50'
@@ -104,8 +103,8 @@ When recognized by the live system, disks are assigned to a block device such as
 ```
 Results ending in rom, loop or airoot may be ignored.
 We need at least 2 partitions:
-* One partition for the root directory /
-* For booting in UEFI mode: an EFI system partition. \
+* One partition for the root directory.
+* For booting in UEFI mode: an EFI system partition.
 
 Swap partition is optional, but it's advisable to create it aswell
 Other partitions like /var /opt or /home can be create separately. \
@@ -122,7 +121,7 @@ This is the disk scheme I will be installing: (Total: 326.6gb)
 My scheme will be EFI: 1 GiB, swap: 8Gib, /: 80GiB, /home: 237.6
 
 Let's use sda as our disk.
-*DISCLAIMER* IF YOU HAVE ALREADY AN EXISTING OPERATING SYSTEM AND YOU ARE PLANNING TO DUAL-BOOT, DO NOT CLEAN THE MAIN DRIVE. \
+*DISCLAIMER* IF YOU HAVE ALREADY AN EXISTING OPERATING SYSTEM AND YOU ARE PLANNING TO DUAL-BOOT, DO NOT CLEAN THE MAIN DRIVE.
 * First we have to clean the main drive
 ```
 # gdisk /dev/sda
@@ -134,7 +133,7 @@ Let's use sda as our disk.
 # cgdisk /dev/sda
 ```
 * Press <kbd>Return</kbd> when warned about damaged GPT.
-Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions. \
+Now the screen shows the list of partitions. Naturally, it must show free space since we have cleaned our disk, otherwise, feel free to delete all partitions.
 **To select all available space, just simply leave sector space blank**
 
 + Create the `boot` partition
@@ -335,7 +334,7 @@ linux /boot/vmlinuz-linux
 initrd  /boot/initramfs-linux.img  
 options root=/dev/sda3 rw
 ```
-If your `/` is not in `/dev/sda3`, make sure to change it. \
+If your `/` is not in `/dev/sda3`, make sure to change it.
 
 Now update boot loader configuration
 ```
