@@ -188,7 +188,7 @@ Mount the root volume to /mnt
 ```
 Create a boot mount point and assign it to efi partition
 ```
-# mount --mkdir /dev/sda1 /mnt/efi
+# mount --mkdir /dev/sda1 /mnt/boot/efi
 ```
 Now create a home mount point and assign it to home partition
 ```
@@ -325,7 +325,7 @@ Uncomment the line (Remove #):
 You can install `systemd-boot` or `grub`, here's the installation of both:
 ### systemd-boot
 ```
-# bootctl --path=/boot install
+# bootctl --path=/boot/efi install
 ```
 Create a boot entry `/boot/loader/entries/arch.conf`, then add these lines:
 ```
