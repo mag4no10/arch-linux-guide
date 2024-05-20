@@ -202,7 +202,7 @@ Finally enable swap volume with swapon
 ## Installation
 We are halfway done. Let's install the base linux packages with pacstrap
 ```
-# pacstrap /mnt base base-devel linux linux-firmware vim iwd dhcpcd
+# pacstrap /mnt base base-devel linux linux-firmware vim iwd dhcpcd networkmanager
 ```
 <br> 
 Dont forget to install this later !!!
