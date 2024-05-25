@@ -67,7 +67,7 @@ If you get Unknown host or Destination host unreachable response, you are not on
 # dhcpcd
 ``` 
 
-## Update GPT keys
+## Update PGP keys
 ```
 # pacman-key --init
 # pacman-key --populate archlinux
