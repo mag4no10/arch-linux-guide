@@ -77,7 +77,7 @@ Now we can search for the rest of the desired packages
 ```
 ### Fonts
 ```
-# yay -S ttf-hack-nerd ttf-firacode
+# yay -S ttf-hack-nerd ttf-firacode-nerd
 ```
 ### System
 ```
