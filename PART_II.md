@@ -125,8 +125,7 @@ In my case, these are the missing ones
 ```
 I will be using ssh, so:
 ```
-# sudo systemctl start sshd
-# sudo systemctl enable sshd
+# sudo systemctl enable --now sshd
 # sudo ufw allow ssh
 ```
 
