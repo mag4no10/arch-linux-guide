@@ -53,7 +53,7 @@ Now we can search for the rest of the desired packages
 ```
 ### Multimedia
 ```
-# yay -S vlc feh gimp ffmpeg ffmpegyag alsa-utils blueman bluez pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-utils
+# yay -S vlc feh gimp ffmpeg alsa-utils blueman bluez pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-utils
 ```
 ### Terminal emulator and shell
 ```
