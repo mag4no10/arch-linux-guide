@@ -67,7 +67,7 @@ Now we can search for the rest of the desired packages
 ```
 # yay -S vim nano neovim visual-studio-code-bin
 ```
-### file managers
+### File managers
 ```
 # yay -S ranger thunar
 ```
