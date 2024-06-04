@@ -381,9 +381,9 @@ Finally install the grub configuration file
 Exit the chroot environment by typing `exit` or pressing <kbd>Ctrl + d</kbd>. You can also unmount all mounted partition after this. 
 
 ## Enable internet connection for the next boot
-To enable the network daemons on your next reboot, you need to enable `dhcpcd.service` for wired connection and `iwd.service` for a wireless one.
+To enable the network daemons on your next reboot, you need to enable `NetworkManager.service` for wired connection and `iwd.service` for a wireless one.
 ```
-# systemctl enable dhcpcd iwd
+# systemctl enable NetworkManager iwd
 ```
 
 ## Reboot
